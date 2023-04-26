@@ -856,3 +856,7 @@ footer .address{
   .nav-comp:hover{
 	cursor: pointer;
   }
+
+  .carousel-item{
+	height:500px;
+  }
