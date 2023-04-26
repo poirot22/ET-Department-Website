@@ -778,7 +778,7 @@ footer .address{
 }
 
 /* Navbar container */
-.navbar {
+/* .navbar {
     overflow: hidden;
     background-color: #333;
   }
@@ -836,4 +836,23 @@ footer .address{
   
   .dropdown:hover .dropdown-content {
     display: block;
+  } */
+
+  .navbar{
+	background-color: #0F6C6B;
+	justify-content: center;
+  }
+
+  #dd{
+	background-color: #0F6C6B;
+	border: none;
+  }
+
+  .nav-comp{
+	color:white;
+	padding-right: 20px;
+  }
+
+  .nav-comp:hover{
+	cursor: pointer;
   }

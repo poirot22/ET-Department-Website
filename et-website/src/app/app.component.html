@@ -1,98 +1,131 @@
-<div class="wrapper">
-  <!-- header starts here -->
+<!-- <div class="wrapper">
+  <!header starts here -->
   <header id="header" class="">
-      <!-- header -->
-      <div class="header-wrapper">
-          <div class="header-container">
-              <div>
-                  <div class="logo-name">
-                      <div class="logo">
-                          <a href="" title=""><img src="https://pbs.twimg.com/profile_images/1482758580634005506/SvUki-Xz_400x400.jpg" alt=""></a>
-                      </div>
-                      <div class="name">
-                          <a href="index.html" title="">
-                              <h5>CVR College of Engineering</h5>
-                              <h5 class="primary-color">Department of Emerging Technologies</h5>
-                          </a>
-                      </div>
-                  </div>
-              </div>
-              <div class="header-links">
-                  <a id="loc_icon" href="#" data-toggle="popover" title="Address" data-content="c/o Block No.9 (IC Department), Government Engineering College, Sector-28, Gandhinagar, Gujarat - 382028" data-placement="bottom"><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i></a>
-                  <a id="phone_icon" href="#" data-toggle="popover" title="Phone No." data-content="+91-79-29750281" data-placement="bottom"><i class="fa fa-phone fa-lg" aria-hidden="true"></i></a>
-                  <a id="email_icon" href="#" data-toggle="popover" title="Email" data-content="helpdesk@iiitvadodara.ac.in" data-placement="bottom"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a>
+    <!-- header -->
+    <div class="header-wrapper">
+        <div class="header-container">
+            <div>
+                <div class="logo-name">
+                    <div class="logo">
+                        <a href="" title=""><img src="https://pbs.twimg.com/profile_images/1482758580634005506/SvUki-Xz_400x400.jpg" alt=""></a>
+                    </div>
+                    <div class="name">
+                        <a href="" title="">
+                            <h5>CVR College of Engineering</h5>
+                            <h5 class="primary-color">Department of Emerging Technologies</h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="header-links">
+                <a id="loc_icon" href="#" data-toggle="popover" title="Address" data-content="c/o Block No.9 (IC Department), Government Engineering College, Sector-28, Gandhinagar, Gujarat - 382028" data-placement="bottom"><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i></a>
+                <a id="phone_icon" href="#" data-toggle="popover" title="Phone No." data-content="+91-79-29750281" data-placement="bottom"><i class="fa fa-phone fa-lg" aria-hidden="true"></i></a>
+                <a id="email_icon" href="#" data-toggle="popover" title="Email" data-content="helpdesk@iiitvadodara.ac.in" data-placement="bottom"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a>
 
-              </div>
-          </div>
-      </div>
-      <div class="navbar">
-        <a href="#home">Home</a>
-        <a href="#news">News</a>
-        <div class="dropdown">
-          <button class="dropbtn">Dropdown 
-            <i class="fa fa-caret-down"></i>
+            </div> -->
+        </div>
+    </div>
+    <!-- <div class="navbar">
+      <a href="#home">Home</a>
+      <a href="#news">News</a>
+      <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown button
           </button>
-          <div class="dropdown-content">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
-          </div>
-        </div> 
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+      </div>  -->
+      <div class="navbar">
+        <div class="nav-comp">
+            Home
+        </div>
+        <div ngbDropdown class="dropdown nav-comp">
+            <button ngbDropdownToggle class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="dd">
+                Branches
+            </button>
+            <ul ngbDropdownMenu class="dropdown-menu">
+                <li ngbDropdownItem><a class="dropdown-item" href="#">CSIT</a></li>
+                <li ngbDropdownItem><a class="dropdown-item" href="#">AI/ML</a></li>
+                <li ngbDropdownItem><a class="dropdown-item" href="#">Data Science</a></li>
+                <li ngbDropdownItem><a class="dropdown-item" href="#">Cyber Security</a></li>
+            </ul>
+        </div>
+        <div class="nav-comp">
+            Infrastructure
+        </div>
+        <div class="nav-comp">
+            Faculty
+        </div>
+        <div class="nav-comp">
+            Students Forum
+        </div>
+        <div ngbDropdown class="dropdown nav-comp">
+            <button ngbDropdownToggle class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="dd">
+                Contact
+            </button>
+            <ul ngbDropdownMenu class="dropdown-menu">
+                <li ngbDropdownItem><a class="dropdown-item" href="#">Contact Us</a></li>
+                <li ngbDropdownItem><a class="dropdown-item" href="#">Development Team</a></li>
+            </ul>
+        </div>
+
       </div>
-      
-  </header>
-  <!-- /header -->
-  <!-- Content wrapper -->
-  <div class="contents-wrapper">
-      <!-- Contents starts here -->
-      <div class="content">
-          <h1>About us</h1>
-          <p>True to its vision of “In pursuit of Excellence”, CVR College of Engineering was the first college in the State to introduce M.Tech programs in Artificial Intelligence and Data Sciences, well before AICTE could recognize them as emerging areas. Continuing the trend, CVR College pioneered a new B.Tech course in Computer Science and Information Technology (CSIT) in the year 2019, the brainchild of our Chairman. CVR was the only college in Telangana to do so at that time. The new course brought the best of both CSE and IT together providing CSIT graduates more opportunities than the graduates of CSE and IT courses. The emerging areas included in the new program have been identified by the national level committee as part of National Perspective Plan for Engineering Education and accepted by AICTE. Also, the courses provide employment and research opportunities in these areas. The department was renamed as Department of Emerging Technologies (ET) in 2022 and now also includes the UG programmes in AIML, Data Science and Cyber Security.</p>
-          <p>The program is designed with an intent to educate the engineering students on the emerging areas of Artificial Intelligence (AI), Machine Learning (ML), Internet of Things (IoT) and Data Sciences (DS) by introducing them as core courses. The program also educates the students with the related courses like statistics, R Programming, Big Data Analytics & Platforms, etc. Further, each student can choose from various streams in their professional electives that includes cutting edge technologies like Cyber Security (CS), Blockchain technologies, NoSQL Databases, Social Media Analytics, Neural Networks & Fuzzy Systems, Deep Learning and many more.</p>
-          <p>The Department has 8 laboratory units consisting of 258 systems, catering to the B. Tech curriculum. The systems use standard licensed software as a college policy including open source. </p>
-      </div>
-  </div>
-  <!-- Footer -->
-  <footer>
-      <div class="footer-wrapper">
-          <span class="logo"><img src="img/IIITV_Logo_1x1_small.png" alt=""></span>
-          <div class="row">
-              <div class="col-sm-4 address">
-                  <strong>Address : </strong>c/o Block No.9 (IC Department), Government Engineering College, Sector-28, Gandhinagar, Gujarat - 382028
-              </div>
-              <div class="col-sm-4 links">
-                  <div>
-                      <a href="index.html#news">News</a>
-                      <i class="seperator"></i>
-                      <a href="index.html#announcements">Announcement</a>
-                      <i class="seperator"></i>
-                      <a href="index.html#events">Events</a>
-                  </div>
-                  <div>
-                      <a href="index.html">Home</a>
-                      <i class="seperator"></i>
-                      <a href="rti.html">RTI</a>
-                      <i class="seperator"></i>
-                      <a href="pdf/MOU.pdf">MOU</a>
-                  </div>
-                  <div>
-                      <a href="admissions.html">Admission</a>
-                      <i class="seperator"></i>
-                      <a href="student_corner.html">Student</a>
-                      <i class="seperator"></i>
-                      <a href="faculty.html">Faculty</a>
-                  </div>
-              </div>
-              <div class="col-sm-4 footer-social">
-                  <a href="#!"><i class="fa fa-facebook" aria-hidden="true"
-                                  title="Official Facebook Page"></i></a>
-                  <a href="https://github.com/iiitv"><i class="fa fa-github" aria-hidden="true"
-                                                        title="Github Group"></i></a>
-                  <a href="#!"><i class="fa fa-linkedin" aria-hidden="true" title="LinkedIn Profile"></i></a>
-                  <a href="#!" title=""><i class="fa fa-twitter" aria-hidden="true"
-                                           title="Official Twitter Account"></i></a>
-              </div>
-          </div>
-      </div>
-  </footer>
+    
+<!-- /header -->
+<!-- Content wrapper -->
+<div class="contents-wrapper">
+    <!-- Contents starts here -->
+    <div class="content">
+        <h1>About us</h1>
+        <p>True to its vision of “In pursuit of Excellence”, CVR College of Engineering was the first college in the State to introduce M.Tech programs in Artificial Intelligence and Data Sciences, well before AICTE could recognize them as emerging areas. Continuing the trend, CVR College pioneered a new B.Tech course in Computer Science and Information Technology (CSIT) in the year 2019, the brainchild of our Chairman. CVR was the only college in Telangana to do so at that time. The new course brought the best of both CSE and IT together providing CSIT graduates more opportunities than the graduates of CSE and IT courses. The emerging areas included in the new program have been identified by the national level committee as part of National Perspective Plan for Engineering Education and accepted by AICTE. Also, the courses provide employment and research opportunities in these areas. The department was renamed as Department of Emerging Technologies (ET) in 2022 and now also includes the UG programmes in AIML, Data Science and Cyber Security.</p>
+        <p>The program is designed with an intent to educate the engineering students on the emerging areas of Artificial Intelligence (AI), Machine Learning (ML), Internet of Things (IoT) and Data Sciences (DS) by introducing them as core courses. The program also educates the students with the related courses like statistics, R Programming, Big Data Analytics & Platforms, etc. Further, each student can choose from various streams in their professional electives that includes cutting edge technologies like Cyber Security (CS), Blockchain technologies, NoSQL Databases, Social Media Analytics, Neural Networks & Fuzzy Systems, Deep Learning and many more.</p>
+        <p>The Department has 8 laboratory units consisting of 258 systems, catering to the B. Tech curriculum. The systems use standard licensed software as a college policy including open source. </p>
+    </div>
 </div>
+<!-- Footer -->
+<footer>
+    <div class="footer-wrapper">
+        <span class="logo"><img src="img/IIITV_Logo_1x1_small.png" alt=""></span>
+        <div class="row">
+            <div class="col-sm-4 address">
+                <strong>Address : </strong>c/o Block No.9 (IC Department), Government Engineering College, Sector-28, Gandhinagar, Gujarat - 382028
+            </div>
+            <div class="col-sm-4 links">
+                <div>
+                    <a href="index.html#news">News</a>
+                    <i class="seperator"></i>
+                    <a href="index.html#announcements">Announcement</a>
+                    <i class="seperator"></i>
+                    <a href="index.html#events">Events</a>
+                </div>
+                <div>
+                    <a href="index.html">Home</a>
+                    <i class="seperator"></i>
+                    <a href="rti.html">RTI</a>
+                    <i class="seperator"></i>
+                    <a href="pdf/MOU.pdf">MOU</a>
+                </div>
+                <div>
+                    <a href="admissions.html">Admission</a>
+                    <i class="seperator"></i>
+                    <a href="student_corner.html">Student</a>
+                    <i class="seperator"></i>
+                    <a href="faculty.html">Faculty</a>
+                </div>
+            </div>
+            <div class="col-sm-4 footer-social">
+                <a href="#!"><i class="fa fa-facebook" aria-hidden="true"
+                                title="Official Facebook Page"></i></a>
+                <a href="https://github.com/iiitv"><i class="fa fa-github" aria-hidden="true"
+                                                      title="Github Group"></i></a>
+                <a href="#!"><i class="fa fa-linkedin" aria-hidden="true" title="LinkedIn Profile"></i></a>
+                <a href="#!" title=""><i class="fa fa-twitter" aria-hidden="true"
+                                         title="Official Twitter Account"></i></a>
+            </div>
+        </div>
+    </div>
+</footer> 
