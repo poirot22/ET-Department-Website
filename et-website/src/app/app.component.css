@@ -857,6 +857,8 @@ footer .address{
 	cursor: pointer;
   }
 
-  .carousel-item{
-	height:500px;
-  }
+ #f-wrapper{
+	background-color: #0F6C6B;
+	text-align: center;
+ }
+ 
