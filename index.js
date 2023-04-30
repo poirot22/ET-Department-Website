@@ -6,7 +6,44 @@ const schemas = require('./schemas.js')
 const confidential = require('./confidential.js')
 const queries = require('./queries.js')
 const { json } = require('body-parser');
+const cors = require('cors')
+
+
+
+
+
+//MIDDLEWARES
 app.use(express.json())
+
+app.use('/verify',(req,res,next)=>{
+    try{
+        
+        let token=req.headers.authorization 
+        
+        if(token!=null){
+            console.log(token)
+            token=token.split(" ")[1]
+            let student = jwt.verify(token,confidential.SECRET_KEY)
+            console.log(student.rollno)
+            req.studentRollNo=student.rollno
+        }
+        else{
+            res.sendStatus(401).json({message:"unauthorised user"})
+        }
+        next()
+    }
+    catch(error){
+        console.log(error)
+        res.sendStatus(201).json({message:"Unauthorized user"})
+    }
+})
+
+app.use(cors({
+    origin:'http://localhost:4200'
+}
+))
+
+
 
 
 
@@ -32,6 +69,16 @@ app.get("/getStudentByRollNo/:rollno",(req,res)=>{
 app.get("/getPostById/:postID",(req,res)=>{
     postID=req.params.postID 
     queries.getPostById(postID).then(response=>{
+        res.status(response.status).send(response)
+    })
+})
+
+app.get("/verify",(req,res)=>{
+    res.send({"Student Roll Number":req.studentRollNo})
+})
+
+app.get("/getAllPosts",(req,res)=>{
+    queries.getAllPosts().then(response=>{
         res.status(response.status).send(response)
     })
 })

@@ -1,0 +1,34 @@
+<div>
+    <div class="text-center p-3">
+        <p class="font-bold text-2xl underline underline-offset-4 m-auto">Students Forum</p>
+    </div>
+    <div class="flex p-3 justify-center">
+        <div class="text-center w-1/5 p-3 shadow-lg h-1/6 align-top ">
+            <div class="m-0 p-0">
+                <p class="text-2xl font-bold ">Login to post</p>
+            </div>
+            <div class="pt-4">
+                <a href="" class="text-xl bg-[#0F6C6B] text-white p-2 rounded-lg ">Login</a>
+            </div>
+           
+        </div>
+        <div class="w-4/5 p-3">
+            <p class="text-2xl font-bold underline ml-8 p-2">Posts</p>
+            <div class="shadow-lg">
+                <div *ngFor="let post of posts.reverse()" class=" p-3" id="post-box">
+                    <div class="flex">
+                        <div class="text-xl font-semibold p-2" id="post-title">{{post.title}}</div>
+                        <div class="text-sm font-light p-2 mt-1.5">&#x2022; by {{post.postedBy}} on {{post.postedOn.slice(11,16)}}, {{post.postedOn.slice(0,10) |  date: 'dd/MM/yyyy'}}</div>
+
+                    </div>
+                    <div class="text-md p-1 ml-3">{{post.content}}</div>
+                    <div class="mb-0 ml-4 pt-2">
+                        <a class="text-sm text-white underline bg-[#0F6C6B] p-1 mt-6 rounded-md" id="comment-btn">Comment</a>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
