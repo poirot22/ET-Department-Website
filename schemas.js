@@ -44,7 +44,7 @@ const post = new mongoose.Schema({
         type:String,
         required:true
     },
-    poster:{
+    postedBy:{
         type:String,
         required:true
     },
