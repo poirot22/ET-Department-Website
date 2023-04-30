@@ -12,6 +12,7 @@ import { AimlComponent } from './aiml/aiml.component';
 import { CybersecComponent } from './cybersec/cybersec.component';
 import { DatasciComponent } from './datasci/datasci.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ForumComponent } from './forum/forum.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     AimlComponent,
     CybersecComponent,
     DatasciComponent,
+    ForumComponent,
   ],
   imports: [
     BrowserModule,

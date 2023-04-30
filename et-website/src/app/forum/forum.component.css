@@ -1,0 +1,9 @@
+.underline{
+    text-decoration-color:#0F6C6B;
+}
+#post-box{
+    border-bottom: 1px solid gray;
+}
+#comment-btn{
+    text-decoration-color:rgb(29 78 216 / var(--tw-text-opacity));
+};

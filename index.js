@@ -6,6 +6,8 @@ const schemas = require('./schemas.js')
 const confidential = require('./confidential.js')
 const queries = require('./queries.js')
 const { json } = require('body-parser');
+const cors = require('cors')
+
 
 
 
@@ -36,6 +38,10 @@ app.use('/verify',(req,res,next)=>{
     }
 })
 
+app.use(cors({
+    origin:'http://localhost:4200'
+}
+))
 
 
 
@@ -69,6 +75,12 @@ app.get("/getPostById/:postID",(req,res)=>{
 
 app.get("/verify",(req,res)=>{
     res.send({"Student Roll Number":req.studentRollNo})
+})
+
+app.get("/getAllPosts",(req,res)=>{
+    queries.getAllPosts().then(response=>{
+        res.status(response.status).send(response)
+    })
 })
 
 

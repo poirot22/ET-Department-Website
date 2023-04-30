@@ -103,8 +103,16 @@ async function login(loginForm){
     }
 }
 
+async function getAllPosts(){
+    const posts = await Post.find()
+
+    return {"message":"Posts returned","status":201,"posts":posts}
+}
+
 module.exports.addStudent = addStudent
 module.exports.getStudentByRollNo = getStudentByRollNo
 module.exports.addPost = addPost
 module.exports.getPostById = getPostById
 module.exports.getCommentsOnPost = getCommentsOnPost
+module.exports.addComment =addComment
+module.exports.getAllPosts =getAllPosts
