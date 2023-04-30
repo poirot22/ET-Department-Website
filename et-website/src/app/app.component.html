@@ -39,8 +39,8 @@
           </ul>
         </div>
       </div>  -->
-      <div class="navbar flex justify-around p-4 items-center">
-        <div class="nav-comp">
+      <div class="navbar">
+        <div class="nav-comp" routerLink="/home">
             Home
         </div>
         <div ngbDropdown class="dropdown nav-comp">
@@ -48,20 +48,23 @@
                 Branches
             </button>
             <ul ngbDropdownMenu class="dropdown-menu">
-                <li ngbDropdownItem><a class="dropdown-item" href="#">CSIT</a></li>
-                <li ngbDropdownItem><a class="dropdown-item" href="#">AI/ML</a></li>
-                <li ngbDropdownItem><a class="dropdown-item" href="#">Data Science</a></li>
-                <li ngbDropdownItem><a class="dropdown-item" href="#">Cyber Security</a></li>
+                <li ngbDropdownItem><a class="dropdown-item" href="#" routerLink="/csit">CSIT</a></li>
+                <li ngbDropdownItem><a class="dropdown-item" href="#" routerLink="/aiml">AI/ML</a></li>
+                <li ngbDropdownItem><a class="dropdown-item" href="#" routerLink="/datascience">Data Science</a></li>
+                <li ngbDropdownItem><a class="dropdown-item" href="#" routerLink="/cybersecurity">Cyber Security</a></li>
             </ul>
         </div>
-        <div class="nav-comp">
-          <a class="text-sm font-bold hover">Infrastructure</a>
+        <div class="nav-comp" routerLink="/infrastruture">
+            Infrastructure
         </div>
-        <div class="nav-comp">
-          <a class="text-sm font-bold"> Faculty</a>
+        <div class="nav-comp" routerLink="/faculty">
+            Faculty
         </div>
         <div class="nav-comp">
           <a class="text-sm font-bold hover:text-[#FFFFFF]">Students Forum</a>
+        </div>
+        <div class="nav-comp">
+            Student Club
         </div>
         <div ngbDropdown class="dropdown nav-comp">
             <button ngbDropdownToggle class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="dd">
@@ -75,51 +78,8 @@
 
       </div>
 
+  <router-outlet></router-outlet>
       
-      <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active" data-bs-interval="2000">
-            <img src="assets/img/img1.jpg" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" data-bs-interval="2000">
-            <img src="assets/img/img2.JPG" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" data-bs-interval="2000">
-            <img src="assets/img/img3.JPG" class="d-block w-100" alt="...">
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    
-<!-- /header -->
-<!-- Content wrapper -->
-<div class="contents-wrapper">
-    <!-- Contents starts here -->
-    <div class="content">
-        <h1>About us</h1>
-        <p>True to its vision of “In pursuit of Excellence”, CVR College of Engineering was the first college in the State to introduce M.Tech programs in Artificial Intelligence and Data Sciences, well before AICTE could recognize them as emerging areas. Continuing the trend, CVR College pioneered a new B.Tech course in Computer Science and Information Technology (CSIT) in the year 2019, the brainchild of our Chairman. CVR was the only college in Telangana to do so at that time. The new course brought the best of both CSE and IT together providing CSIT graduates more opportunities than the graduates of CSE and IT courses. The emerging areas included in the new program have been identified by the national level committee as part of National Perspective Plan for Engineering Education and accepted by AICTE. Also, the courses provide employment and research opportunities in these areas. The department was renamed as Department of Emerging Technologies (ET) in 2022 and now also includes the UG programmes in AIML, Data Science and Cyber Security.</p>
-        <p>The program is designed with an intent to educate the engineering students on the emerging areas of Artificial Intelligence (AI), Machine Learning (ML), Internet of Things (IoT) and Data Sciences (DS) by introducing them as core courses. The program also educates the students with the related courses like statistics, R Programming, Big Data Analytics & Platforms, etc. Further, each student can choose from various streams in their professional electives that includes cutting edge technologies like Cyber Security (CS), Blockchain technologies, NoSQL Databases, Social Media Analytics, Neural Networks & Fuzzy Systems, Deep Learning and many more.</p>
-        <p>The Department has 8 laboratory units consisting of 258 systems, catering to the B. Tech curriculum. The systems use standard licensed software as a college policy including open source. </p>
-    </div>
-</div>
-<!-- Footer -->
-<footer>
-    <div class="footer-wrapper">
-
-        <div class="row">
-            <h1>Vision</h1>
-            <p>To evolve as a Center of Excellence in emerging areas, impart quality education to produce ethical, motivated and skilled professionals to meet the ever-increasing technological & social challenges.</p>
-
-        </div>
-    </div>
-</footer> 
 
 
 <!--Vision
@@ -137,3 +97,15 @@ M3: To provide students an opportunity to learn both foundational and experiment
 M4: To promote and nurture the spirit of innovation and entrepreneurship in our students.
 
 M5: To emerge as a Center of Excellence through Research, Consultancy and Development Activities.-->
+
+<footer class="bg-[#0F6C6B] mt-0 text-white  p-5 flex justify-evenly" id="f-wrapper">
+    <div id="f-text" class="text-center">
+        <p>Department of Emerging Technologies</p>
+        <p>Copyright&#169;2023</p>
+    </div>    
+    <div >
+        <p>CVR College of Engineering</p>
+        <p>(An UGC Autonomous Institution with NAAC 'A' Grade, Affiliated To JNTUH)</p>
+        <p>Vastunagar, Mangalpalli (V), Ibrahimpatan (M), R.R. District, Telangana</p>
+    </div>
+</footer>

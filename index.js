@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const port = 3000
+const schemas = require('./schemas.js')
 
 app.get('/', (req, res) => {
     res.send('Hello World!')

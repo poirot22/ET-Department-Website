@@ -1,0 +1,13 @@
+.carousel-item{
+	height:500px;
+}
+#infra-table{
+    width:800px;
+    margin-top: 200px;
+}
+
+#infra-table table,td{
+    border: 2px solid black;
+    text-align: center;
+}
+
