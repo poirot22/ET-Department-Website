@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'et-website';
+
+  getToken(){
+    if(localStorage.getItem("studentToken")){
+      return true
+    }
+    return false
+  }
 }
