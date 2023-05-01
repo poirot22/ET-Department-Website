@@ -20,10 +20,7 @@ export class ForumComponent {
     rollno: new FormControl(),
     password: new FormControl()
   })
-  postForm=new FormGroup({
-    title: new FormControl(),
-    content:new FormControl()
-  })
+
   message:any=""
   posts:any
   temp:any
@@ -43,9 +40,9 @@ export class ForumComponent {
       console.log(this.temp)
       if(this.temp.status==200){
         localStorage.setItem("studentToken",this.temp.token)
-        //this.router.navigate(['/forum'])
+        this.router.navigate(['/userforum'])
       }
-      var headers_object = new HttpHeaders({
+      /*var headers_object = new HttpHeaders({
         'Content-Type': 'application/json',
          'Authorization': "Bearer "+localStorage.getItem('studentToken'),
          'Access-Control-Allow-Origin': '*',
@@ -64,30 +61,22 @@ export class ForumComponent {
               this.temp=resp
               this.userData=this.temp["Student Data"]
               console.log(this.userData)
+              this.router.navigate(["/userforum"]);
           })
-      })
+      })*/
 
     })
   }
 
-  getToken(){
+  /*getToken(){
     if(localStorage.getItem("studentToken")){
       return true
     }
     return false
-  }
+  }*/
 
   logout(){
     localStorage.removeItem("studentToken")
-  }
-
-  postData:any
-  post(){
-    this.postData=this.postForm.value 
-    this.postData.postedBy=this.userData.rollno
-    this.http.post("http://localhost:9000/addPost",this.postData).subscribe(resp=>{
-      console.log(resp)
-    })
   }
 
 }
