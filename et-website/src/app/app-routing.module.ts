@@ -7,6 +7,7 @@ import { CsitComponent } from './csit/csit.component';
 import { AimlComponent } from './aiml/aiml.component';
 import { CybersecComponent } from './cybersec/cybersec.component';
 import { DatasciComponent } from './datasci/datasci.component';
+import { ForumComponent } from './forum/forum.component';
 
 const routes: Routes = [
   {
@@ -36,7 +37,12 @@ const routes: Routes = [
   {
     component:DatasciComponent,
     path:'datascience'
-  }
+  },
+  {
+    component:ForumComponent,
+    path:'forum'
+  },
+
   
 ];
 

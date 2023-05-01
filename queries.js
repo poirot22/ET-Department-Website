@@ -95,7 +95,7 @@ async function login(loginForm){
     const matchPassword = await bcrypt.compare(loginForm.password,student.password)
 
     if(matchPassword){
-        const token = await jwt.sign({rollo:student.rollno,password:student.password},confidential.SECRET_KEY)
+        const token = await jwt.sign({rollno:student.rollno,password:student.password},confidential.SECRET_KEY)
         return {"message":"User Logged In","token":token,"status":200}
     }
     else{
@@ -103,8 +103,17 @@ async function login(loginForm){
     }
 }
 
+async function getAllPosts(){
+    const posts = await Post.find()
+
+    return {"message":"Posts returned","status":201,"posts":posts}
+}
+
 module.exports.addStudent = addStudent
 module.exports.getStudentByRollNo = getStudentByRollNo
 module.exports.addPost = addPost
 module.exports.getPostById = getPostById
 module.exports.getCommentsOnPost = getCommentsOnPost
+module.exports.addComment =addComment
+module.exports.getAllPosts =getAllPosts
+module.exports.login =login

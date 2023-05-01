@@ -6,12 +6,19 @@ const schemas = require('./schemas.js')
 const confidential = require('./confidential.js')
 const queries = require('./queries.js')
 const { json } = require('body-parser');
+const cors = require('cors')
+const jwt = require('jsonwebtoken')
+
 
 
 
 
 //MIDDLEWARES
 app.use(express.json())
+app.use(cors({
+    origin:'http://localhost:4200'
+}
+))
 
 app.use('/verify',(req,res,next)=>{
     try{
@@ -71,6 +78,12 @@ app.get("/verify",(req,res)=>{
     res.send({"Student Roll Number":req.studentRollNo})
 })
 
+app.get("/getAllPosts",(req,res)=>{
+    queries.getAllPosts().then(response=>{
+        res.status(response.status).send(response)
+    })
+})
+
 
 //POST Methods
 app.post('/addStudent',(req,res)=>{
@@ -92,6 +105,13 @@ app.post('/addPost',(req,res)=>{
     })
 })
 
+app.post('/login',(req,res)=>{
+    const loginForm=req.body
+
+    queries.login(loginForm).then(resp=>{
+        res.status(resp.status).send(resp)
+    })
+})
 
 
 //PUT Methods
