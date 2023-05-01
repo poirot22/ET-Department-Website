@@ -7,6 +7,7 @@ const confidential = require('./confidential.js')
 const queries = require('./queries.js')
 const { json } = require('body-parser');
 const cors = require('cors')
+const jwt = require('jsonwebtoken')
 
 
 
@@ -14,6 +15,10 @@ const cors = require('cors')
 
 //MIDDLEWARES
 app.use(express.json())
+app.use(cors({
+    origin:'http://localhost:4200'
+}
+))
 
 app.use('/verify',(req,res,next)=>{
     try{
@@ -38,10 +43,6 @@ app.use('/verify',(req,res,next)=>{
     }
 })
 
-app.use(cors({
-    origin:'http://localhost:4200'
-}
-))
 
 
 

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Pipe, PipeTransform } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -20,9 +20,14 @@ export class ForumComponent {
     rollno: new FormControl(),
     password: new FormControl()
   })
+  postForm=new FormGroup({
+    title: new FormControl(),
+    content:new FormControl()
+  })
   message:any=""
   posts:any
   temp:any
+  userData:any
   ngOnInit(){
     this.http.get("http://localhost:9000/getAllPosts").subscribe(resp=>{
       //console.log(resp)
@@ -40,6 +45,28 @@ export class ForumComponent {
         localStorage.setItem("studentToken",this.temp.token)
         //this.router.navigate(['/forum'])
       }
+      var headers_object = new HttpHeaders({
+        'Content-Type': 'application/json',
+         'Authorization': "Bearer "+localStorage.getItem('studentToken'),
+         'Access-Control-Allow-Origin': '*',
+         'Access-Control-Allow-Credentials': 'true',
+         'Access-Control-Allow-Headers': 'Content-Type',
+         'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+      });
+      const httpOptions = {
+        headers: headers_object
+      };
+
+      this.http.get("http://localhost:9000/verify",httpOptions).subscribe(resp=>{
+          this.temp=resp 
+          console.log(this.temp)
+          this.http.get("http://localhost:9000/getStudentByRollNo/"+this.temp["Student Roll Number"]).subscribe(resp=>{
+              this.temp=resp
+              this.userData=this.temp["Student Data"]
+              console.log(this.userData)
+          })
+      })
+
     })
   }
 
@@ -48,6 +75,19 @@ export class ForumComponent {
       return true
     }
     return false
+  }
+
+  logout(){
+    localStorage.removeItem("studentToken")
+  }
+
+  postData:any
+  post(){
+    this.postData=this.postForm.value 
+    this.postData.postedBy=this.userData.rollno
+    this.http.post("http://localhost:9000/addPost",this.postData).subscribe(resp=>{
+      console.log(resp)
+    })
   }
 
 }

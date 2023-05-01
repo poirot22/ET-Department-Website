@@ -3,8 +3,8 @@
         <p class="font-bold text-2xl underline underline-offset-4 m-auto">Students Forum</p>
     </div>
     <div class="flex p-3 justify-center items-start">
-        <div class="text-center w-1/5 p-3 shadow-lg h-1/6 mt-4 ">
-            <div class="m-0 p-0">
+        <div *ngIf="!this.getToken(); else elseBlock" class="text-center w-1/5 p-3 shadow-lg h-1/6 mt-4 ">
+            <div  class="m-0 p-0">
                 <p class="text-2xl font-bold">Login to post</p>
             </div>
             <div class="pt-4">
@@ -19,10 +19,20 @@
             </div>
            
         </div>
+        <ng-template #elseBlock>
+            <div>
+                <p>Logged in as {{this.userData.rollno}}</p>
+                <p (click)="logout()">Logout</p>
+            </div>
+        </ng-template>
         <div class="w-4/5 p-3">
 
             <div *ngIf="this.getToken()">
-                <p>Logged in</p>
+                <form [formGroup]="postForm" class="p-2 shadow-lg" (ngSubmit)="post()">
+                    <input type="text" placeholder="Enter title" class="h-8 border border-black w-2/3" formControlName="title"><br><br>
+                    <input type="text" placeholder="Enter body" class="h-32 border border-black  w-2/3" formControlName="content"><br> <br>
+                    <button><a class="text-xl bg-[#0F6C6B] text-white p-2 rounded-lg mt-0">Post</a></button>
+                </form>
             </div>
             <p class="text-2xl font-bold underline ml-8 p-2">Posts</p>
             <div class="shadow-lg">
