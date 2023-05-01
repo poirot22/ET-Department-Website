@@ -41,7 +41,8 @@ const routes: Routes = [
   {
     component:ForumComponent,
     path:'forum'
-  }
+  },
+
   
 ];
 

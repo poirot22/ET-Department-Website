@@ -104,6 +104,13 @@ app.post('/addPost',(req,res)=>{
     })
 })
 
+app.post('/login',(req,res)=>{
+    const loginForm=req.body
+
+    queries.login(loginForm).then(resp=>{
+        res.status(resp.status).send(resp)
+    })
+})
 
 
 //PUT Methods
