@@ -116,3 +116,4 @@ module.exports.getPostById = getPostById
 module.exports.getCommentsOnPost = getCommentsOnPost
 module.exports.addComment =addComment
 module.exports.getAllPosts =getAllPosts
+module.exports.login=login

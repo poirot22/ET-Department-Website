@@ -34,14 +34,26 @@
     <div>
         <p class="text-4xl p-2 underline underline-offset-4 text-center">Current Affairs</p><hr>
         <div *ngFor="let news of this.newsArray " class="border text-blue-800 p-2">
-          <a href={{news.url}}>{{news.title}}</a>
+          <a href={{news.url}} target="_blank">{{news.title}}</a>
         </div>
     </div>
 </div>
 </div>
 <!-- Footer -->
-<footer>
+<div class="flex justify-around" style="height: 350px;">
+    <div class="border-black pl-16 w-2/5 overflow-x-auto">
+      <marquee behavior="" direction="right" scrollamount="15"><p class="text-4xl underline underline-offset-4 items-center">Events</p></marquee>
+      <div *ngFor="let event of this.eventsArray" class="border border-black p-3">
+        <p><b>Title</b> : {{event.title}}</p>
+        <p><b>Date : </b>{{event.date}}</p>
+        <p><b>Description : </b>{{event.description}}</p>
+        <div class="pt-2"><a href="{{event.description}}" class="text-white border border-black p-1 bg-[#0F6C6B] rounded-md">Registration Link</a></div>
+    </div>
+    </div>
+    <div class="border border-black w-3/5 ml-4">hello2</div>
+</div>
 
+<footer>
 <div class="footer-wrapper pt-4">
 
     <div class="vision text-4xl ">

@@ -13,7 +13,7 @@ import { CybersecComponent } from './cybersec/cybersec.component';
 import { DatasciComponent } from './datasci/datasci.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ForumComponent } from './forum/forum.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +31,7 @@ import { ForumComponent } from './forum/forum.component';
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
