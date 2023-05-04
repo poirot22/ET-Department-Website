@@ -27,8 +27,15 @@
         <marquee behavior="" direction="right" scrollamount="20">Official website for ET Department</marquee>
 
     </div>
-    <div>{{date}}</div><br>
-    <div>{{time}}</div>
+    <div>hello</div>
+    <!-- code for analog clock -->
+    <div id="clockContainer">
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+    </div>
+    <!-- <div>{{date}}</div><br>
+    <div>{{time}}</div> -->
     <!-- <div class="navbar">
       <a href="#home">Home</a>
       <a href="#news">News</a>
@@ -64,9 +71,17 @@
         <div class="nav-comp" routerLink="/faculty">
             Faculty
         </div>
-        <div class="nav-comp" routerLink="/forum">
-            Students Forum
+        <div *ngIf="this.getToken(); else elseBlock">
+            <div class="nav-comp" routerLink="/userforum">
+                Students Forum
+            </div>
         </div>
+        <ng-template #elseBlock>
+            <div class="nav-comp" routerLink="/forum">
+                Students Forum
+            </div>
+        </ng-template>
+        
         <div class="nav-comp">
             Student Club
         </div>

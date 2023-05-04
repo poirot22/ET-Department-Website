@@ -14,6 +14,8 @@ import { DatasciComponent } from './datasci/datasci.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ForumComponent } from './forum/forum.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserForumComponent } from './user-forum/user-forum.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CybersecComponent,
     DatasciComponent,
     ForumComponent,
+    UserForumComponent,
   ],
   imports: [
     BrowserModule,

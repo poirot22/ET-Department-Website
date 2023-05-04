@@ -20,6 +20,11 @@
 	border-radius: 2px;
 	padding:4px;
 	background-color: white;
+    border-bottom: none;
+  }
+
+  .mission-outcomes li.bottom{
+    border-bottom:2px solid black;
   }
   .mission-outcomes UL{
 
@@ -213,6 +218,6 @@
         text-decoration-color:#0F6C6B;
     }
 
-    #news-box{
+   /* #news-box{
         width:500px;
-    }
+    }*/
