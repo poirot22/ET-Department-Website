@@ -1,0 +1,13 @@
+.underline{
+    text-decoration-color:#0F6C6B;
+}
+
+.pics{
+    height: 200px;
+    width: 180px;
+    border:none;
+}
+
+.logos{
+    height:30px;
+}

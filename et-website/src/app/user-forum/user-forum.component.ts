@@ -68,6 +68,8 @@ export class UserForumComponent {
     this.postData.postedBy=this.userData.rollno
     this.http.post("http://localhost:9000/addPost",this.postData).subscribe(resp=>{
       console.log(resp)
+      this.router.navigateByUrl('home', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/userforum']);
     })
-  }
-}
+  })
+}}

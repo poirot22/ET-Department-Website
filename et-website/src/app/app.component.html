@@ -43,9 +43,17 @@
         <div class="nav-comp" routerLink="/faculty">
             FACULTY
         </div>
-        <div class="nav-comp" routerLink="/forum">
-            STUDENTS FORUM
+        <div *ngIf="this.getToken(); else elseBlock">
+            <div class="nav-comp" routerLink="/userforum">
+                Students Forum
+            </div>
         </div>
+        <ng-template #elseBlock>
+            <div class="nav-comp" routerLink="/forum">
+                Students Forum
+            </div>
+        </ng-template>
+        
         <div class="nav-comp">
             STUDENTS CLUB
         </div>
@@ -55,7 +63,7 @@
             </button>
             <ul ngbDropdownMenu class="dropdown-menu">
                 <li ngbDropdownItem><a class="dropdown-item" href="#">Contact Us</a></li>
-                <li ngbDropdownItem><a class="dropdown-item" href="#">Development Team</a></li>
+                <li ngbDropdownItem><a class="dropdown-item" href="#" routerLink="/developers">Development Team</a></li>
             </ul>
         </div>
 
