@@ -15,9 +15,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ForumComponent } from './forum/forum.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserForumComponent } from './user-forum/user-forum.component';
-import { CommentComponent } from './comment/comment.component';
-import { RouterModule } from '@angular/router';
-import { DevteamComponent } from './devteam/devteam.component';
 
 @NgModule({
   declarations: [
@@ -31,16 +28,13 @@ import { DevteamComponent } from './devteam/devteam.component';
     DatasciComponent,
     ForumComponent,
     UserForumComponent,
-    CommentComponent,
-    DevteamComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    ReactiveFormsModule,
-    RouterModule
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -41,7 +41,6 @@ async function addPost(body){
         return {"message":"Student doesn't exist","status":400}
     }
     const newPost = new Post(body)
-    studentExists.posts.push(newPost._id)
     await newPost.save()
     return {"message":"Post created","status":201,"post added":newPost}
 
