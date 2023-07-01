@@ -19,11 +19,10 @@
                     <div class="flex">
                         <div class="text-xl font-semibold p-2" id="post-title">{{post.title}}</div>
                         <div class="text-sm font-light p-2 mt-1.5">&#x2022; by {{post.postedBy}} on {{post.postedOn.slice(11,16)}}, {{post.postedOn.slice(0,10) |  date: 'dd/MM/yyyy'}}</div>
-
                     </div>
                     <div class="text-md p-1 ml-3">{{post.content}}</div>
                     <div class="mb-0 ml-4 pt-2">
-                        <a class="text-sm text-white underline bg-[#0F6C6B] p-1 mt-6 rounded-md" id="comment-btn">Comment</a>
+                        <a class="text-sm text-white underline bg-[#0F6C6B] p-1 mt-6 rounded-md" id="comment-btn" routerLink="/reply/{{post._id}}">Reply</a>
                     </div>
                     
                 </div>

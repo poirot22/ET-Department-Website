@@ -1,49 +1,101 @@
-<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="assets/img/img4.jpg" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="assets/img/img5.jpg" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="assets/img/img3.JPG" class="d-block w-100" alt="...">
-      </div>
+<div
+  id="carouselExampleAutoplaying"
+  class="carousel slide"
+  data-bs-ride="carousel"
+>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="assets/img/img4.jpg" class="d-block w-100" alt="..." />
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Nextl</span>
-    </button>
+    <div class="carousel-item">
+      <img src="assets/img/img5.jpg" class="d-block w-100" alt="..." />
+    </div>
+    <div class="carousel-item">
+      <img src="assets/img/img3.JPG" class="d-block w-100" alt="..." />
+    </div>
   </div>
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#carouselExampleAutoplaying"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#carouselExampleAutoplaying"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 
 <!-- /header -->
 <!-- Content wrapper -->
 <div class="contents-wrapper flex justify-evenly">
-<!-- Contents starts here -->
-<div class="w-2/3 content m-4">
-    <h1 class="text-4xl underline underline-offset-4" id="aboutus">About us</h1><br>
-    <p>True to its vision of “In pursuit of Excellence”, CVR College of Engineering was the first college in the State to introduce M.Tech programs in Artificial Intelligence and Data Sciences, well before AICTE could recognize them as emerging areas. Continuing the trend, CVR College pioneered a new B.Tech course in Computer Science and Information Technology (CSIT) in the year 2019, the brainchild of our Chairman. CVR was the only college in Telangana to do so at that time. The new course brought the best of both CSE and IT together providing CSIT graduates more opportunities than the graduates of CSE and IT courses. The emerging areas included in the new program have been identified by the national level committee as part of National Perspective Plan for Engineering Education and accepted by AICTE. Also, the courses provide employment and research opportunities in these areas. The department was renamed as Department of Emerging Technologies (ET) in 2022 and now also includes the UG programmes in AIML, Data Science and Cyber Security.</p><br>
-    <p>The program is designed with an intent to educate the engineering students on the emerging areas of Artificial Intelligence (AI), Machine Learning (ML), Internet of Things (IoT) and Data Sciences (DS) by introducing them as core courses. The program also educates the students with the related courses like statistics, R Programming, Big Data Analytics & Platforms, etc. Further, each student can choose from various streams in their professional electives that includes cutting edge technologies like Cyber Security (CS), Blockchain technologies, NoSQL Databases, Social Media Analytics, Neural Networks & Fuzzy Systems, Deep Learning and many more.</p><br>
-    <p>The Department has 8 laboratory units consisting of 258 systems, catering to the B. Tech curriculum. The systems use standard licensed software as a college policy including open source. </p><br>
-</div>
-<div class=" flex-none w-1/3 news m-4" id="news-box">
+  <!-- Contents starts here -->
+  <div class="w-2/3 content m-4">
+    <h1 class="text-4xl font-extrabold" id="aboutus">About us</h1>
+    <br />
+    <p>
+      True to its vision of “In pursuit of Excellence”, CVR College of
+      Engineering was the first college in the State to introduce M.Tech
+      programs in Artificial Intelligence and Data Sciences, well before AICTE
+      could recognize them as emerging areas. Continuing the trend, CVR College
+      pioneered a new B.Tech course in Computer Science and Information
+      Technology (CSIT) in the year 2019, the brainchild of our Chairman. CVR
+      was the only college in Telangana to do so at that time. The new course
+      brought the best of both CSE and IT together providing CSIT graduates more
+      opportunities than the graduates of CSE and IT courses. The emerging areas
+      included in the new program have been identified by the national level
+      committee as part of National Perspective Plan for Engineering Education
+      and accepted by AICTE. Also, the courses provide employment and research
+      opportunities in these areas. The department was renamed as Department of
+      Emerging Technologies (ET) in 2022 and now also includes the UG programmes
+      in AIML, Data Science and Cyber Security.
+    </p>
+    <br />
+    <p>
+      The program is designed with an intent to educate the engineering students
+      on the emerging areas of Artificial Intelligence (AI), Machine Learning
+      (ML), Internet of Things (IoT) and Data Sciences (DS) by introducing them
+      as core courses. The program also educates the students with the related
+      courses like statistics, R Programming, Big Data Analytics & Platforms,
+      etc. Further, each student can choose from various streams in their
+      professional electives that includes cutting edge technologies like Cyber
+      Security (CS), Blockchain technologies, NoSQL Databases, Social Media
+      Analytics, Neural Networks & Fuzzy Systems, Deep Learning and many more.
+    </p>
+    <br />
+    <p>
+      The Department has 8 laboratory units consisting of 258 systems, catering
+      to the B. Tech curriculum. The systems use standard licensed software as a
+      college policy including open source.
+    </p>
+    <br />
+  </div>
+  <div class="flex-none w-1/3 news m-4" id="news-box">
     <div>
-        <p class="text-4xl p-2 underline underline-offset-4 text-center ">Current Affairs</p>
-        <div class="shadow-lg mt-3">
-          <div *ngFor="let news of this.newsArray " class="border text-blue-800 p-2 ">
-            <a href={{news.url}}>{{news.title}}</a>
-          </div>
+      <p class="text-4xl p-2 text-center font-extrabold">
+        Current Affairs
+      </p>
+      <div class="shadow-lg mt-3">
+        <div
+          *ngFor="let news of this.newsArray"
+          class="border text-blue-800 p-2"
+        >
+          <a href="{{ news.url }}">{{ news.title }}</a>
         </div>
-        
+      </div>
     </div>
-</div>
+  </div>
 </div>
 <!-- Footer -->
-<footer>
+<!--<footer>
 
 <div class="footer-wrapper pt-4">
 
@@ -51,35 +103,70 @@
 
 </div>
 
-</footer>
+</footer>-->
 
-<div class="vision text-4xl ">
-  <h2 id="vision-head">Vision of the Department</h2>
-  <p id="vision-text">To evolve as a Center of Excellence in emerging areas, impart quality education to produce ethical, motivated and skilled professionals to meet the ever-increasing technological & social challenges.</p>
+<div class="vision">
+  <div class="vision text-4xl m-3 p-2">
+    <h2 id="vision-head" class="mb-2 font-bold">Vision of the Department</h2>
+    <p id="vision-text">
+      To evolve as a Center of Excellence in emerging areas, impart quality
+      education to produce ethical, motivated and skilled professionals to meet
+      the ever-increasing technological & social challenges.
+    </p>
+  </div>
+
+
+
+  <div class="grid justify-items-center">
+    <!--tailwind-->
+    <div class="panel panel-default">
+      <!--bootstrap-->
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td class="p-2">
+              M1: To impart students with self-discipline, hard work, all-round
+              personality development and creative problem-solving approach.
+            </td>
+          </tr>
+          <tr>
+            <td class="p-2">
+              M2: To provide quality-education by using the latest
+              infrastructure and nurturing collaborative culture.
+            </td>
+          </tr>
+          <tr>
+            <td class="p-2">
+              M3: To provide students an opportunity to learn both foundational
+              and experimental components in emerging areas.
+            </td>
+          </tr>
+          <tr>
+            <td class="p-2">
+              M4: To promote and nurture the spirit of innovation and
+              entrepreneurship in our students.
+            </td>
+          </tr>
+          <tr>
+            <td class="p-2">
+              M5: To emerge as a Center of Excellence through Research,
+              Consultancy and Development Activities.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-<br>
-
-<!--<div class="mission-outcomes" >
-<h2 id="mission-head" class="text-4xl">Missions of the Department</h2>
-  <ul class="mt-1">
-    <li><strong>M1</strong>: To impart students with self-discipline, hard work, all-round personality development and creative problem-solving approach.</li>
-    <li><strong>M2</strong>: To provide quality-education by using the latest infrastructure and nurturing collaborative culture.</li>
-    <li><strong>M3</strong>: To provide students an opportunity to learn both foundational and experimental components in emerging areas.</li>
-    <li><strong>M4</strong>: To promote and nurture the spirit of innovation and entrepreneurship in our students.</li>
-    <li class="bottom"><strong>M5</strong>: To emerge as a Center of Excellence through Research, Consultancy and Development Activities.</li>              
-  </ul>
-</div>-->
-
-<table class="table-auto border border-white-400">
-<tbody>
-  <tr>
-    <td>M1: To impart students with self-discipline, hard work, all-round personality development and creative problem-solving approach.</td>
-  </tr>
-  <tr><td>M2: To provide quality-education by using the latest infrastructure and nurturing collaborative culture.</td></tr>
-  <tr><td>M3: To provide students an opportunity to learn both foundational and experimental components in emerging areas.</td></tr>
-  <tr><td>M4: To promote and nurture the spirit of innovation and entrepreneurship in our students.</td></tr>
-  <tr><td>M5: To emerge as a Center of Excellence through Research, Consultancy and Development Activities.</td></tr>
-</tbody>
-</table>
 
 
+  <!--<div class="mission-outcomes" >
+  <h2 id="mission-head" class="text-4xl">Missions of the Department</h2>
+    <ul class="mt-1">
+      <li><strong>M1</strong>: To impart students with self-discipline, hard work, all-round personality development and creative problem-solving approach.</li>
+      <li><strong>M2</strong>: To provide quality-education by using the latest infrastructure and nurturing collaborative culture.</li>
+      <li><strong>M3</strong>: To provide students an opportunity to learn both foundational and experimental components in emerging areas.</li>
+      <li><strong>M4</strong>: To promote and nurture the spirit of innovation and entrepreneurship in our students.</li>
+      <li class="bottom"><strong>M5</strong>: To emerge as a Center of Excellence through Research, Consultancy and Development Activities.</li>              
+    </ul>
+  </div>-->

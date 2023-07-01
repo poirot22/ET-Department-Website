@@ -1,5 +1,5 @@
 .primary-color{
-	color:rgb(15,108,107) !important;
+	color:#006A4E !important;
 }
 
 strong{
@@ -11,8 +11,7 @@ html,body{
 }
 
 body{
-	font-family: 'Oxygen',sans-serif;
-	min-height: 100%;
+	font-family: Montserrat;
 }
 
 
@@ -23,7 +22,6 @@ body{
 .wrapper{
 	min-height: 100vh;
 	display: flex;
-    flex-direction: column;
 }
 
 .header-wrapper,.footer-wrapper,.contents-wrapper{
@@ -51,10 +49,14 @@ body{
 ****************/
 
 nav{
-	background-color:rgb(15,108,107);
+	background-color:#0C134F;
 }
 
 /* Navbar */
+
+.navbar{
+	background-color: #0C134F;
+}
 
 .dropdown-submenu {
     position: relative;
@@ -109,7 +111,7 @@ nav{
 }
 
 .navbar-custom{
-	background-color: rgb(15,108,107);
+	background-color: #0C134F;
 	border: 0;
 	margin-bottom: 0;
 }
@@ -164,54 +166,57 @@ nav .nav-wrapper{
 	// overflow: hidden;
 } */
 
-.logo-name{
-	display: flex;
-	align-items:center;
-	margin-left: 2rem;
+body{
+	margin: 0;
+	padding: 0;
 }
 
-.logo-name .name h5{
+.name{
+	margin:0;
+	padding: 0;
+}
+
+
+ .name h5{
 	/* // font-weight: bold; */
-	font-size: 2.3rem;
+	font-size: 2rem;
 	text-decoration: none;
 	color: rgb(50,50,50);
 }
 
-.logo-name .name a:hover{
+.name a:hover{
 	text-decoration: none;
 }
 
-.logo-name .name{
-	margin-left: 1rem;
-}
 
-.logo-name .name h5:nth-child(1){
+
+.name h5:nth-child(1){
 	margin-bottom: 0.3rem;
 }
 
-.logo-name .name h5:nth-child(2){
+
+.name h5:nth-child(2){
 	margin-top: 0.1rem;
 }
 
-.logo-name .logo img{
-	width: 100px;
+.logo img{
+	width: 70px;
 }
 
-.header-links{
-	margin-right: 2rem;
-    margin-bottom: 2.2rem;
+.logo{
+	margin: auto;
 }
 
-.header-links a {
-	cursor:pointer;
-	margin:0 0.75rem;
-	color: inherit;
+.date{
+	max-width: 120px;
 }
 
-.header-links a:hover,.header-links a:focus{
-	color: inherit;
-	opacity: 0.9;
-}
+
+
+
+
+
+
 
 /***************
 *Slick Custom Styles
@@ -624,7 +629,7 @@ footer{
 	background-color: #F0F0F0;
 	background-size: cover;
 	background-position: top center;
-	border-top: 4px solid rgb(50,50,50);
+	/*border-top: 4px solid rgb(50,50,50);*/
 	display: flex;
 	align-items: center;
 	margin-top: 5rem;
@@ -839,12 +844,12 @@ footer .address{
   } */
 
   .navbar{
-	background-color: #0F6C6B;
+	background-color: #0C134F;
 	justify-content: center;
   }
 
   #dd{
-	background-color: #0F6C6B;
+	background-color: #0C134F;
 	border: none;
   }
 
@@ -858,7 +863,7 @@ footer .address{
   }
 
  #f-wrapper{
-	background-color: #0F6C6B;
+	background-color: #0C134F;
 	text-align: center;
  }
  

@@ -1,51 +1,34 @@
 <!-- <div class="wrapper">
   <!header starts here -->
-  <header id="header" class="">
-    <!-- header -->
-    <div class="header-wrapper">
-        <div class="header-container">
-            <div>
-                <div class="logo-name">
-                    <div class="logo">
-                        <a href="" title=""><img src="https://pbs.twimg.com/profile_images/1482758580634005506/SvUki-Xz_400x400.jpg" alt=""></a>
-                    </div>
-                    <div class="name">
-                        <a href="" title="">
-                            <h5>CVR College of Engineering</h5>
-                            <h5 class="primary-color">Department of Emerging Technologies</h5>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- <div class="header-links">
-                <a id="loc_icon" href="#" data-toggle="popover" title="Address" data-content="c/o Block No.9 (IC Department), Government Engineering College, Sector-28, Gandhinagar, Gujarat - 382028" data-placement="bottom"><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i></a>
-                <a id="phone_icon" href="#" data-toggle="popover" title="Phone No." data-content="+91-79-29750281" data-placement="bottom"><i class="fa fa-phone fa-lg" aria-hidden="true"></i></a>
-                <a id="email_icon" href="#" data-toggle="popover" title="Email" data-content="helpdesk@iiitvadodara.ac.in" data-placement="bottom"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<body>
 
-            </div> -->
-        </div>
+
+    <div class="name ">
+            <div class="flex justify-around m-0 p-0">
+                <div class="grid grid-cols-1">
+                    <div class="logo">
+                        <img  src="https://pbs.twimg.com/profile_images/1482758580634005506/SvUki-Xz_400x400.jpg" alt="">
+                    </div>
+                    <div><h1 class=" mt-2 mb-2 text-xl font-bold cvr">CVR College of Engineering</h1></div>
+                </div>
+                <div class="grid">
+                    <h5 class="font-bold">Department of</h5>
+                    <h5 class="font-bold">Emerging Technologies</h5>
+                </div>
+                <div class="">{{ time | date: 'hh:mm:ss a' }}</div>
+            </div>
     </div>
-    <!-- <div class="navbar">
-      <a href="#home">Home</a>
-      <a href="#news">News</a>
-      <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown button
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </div>
-      </div>  -->
+
       <div class="navbar">
         <div class="nav-comp" routerLink="/home">
-            Home
+            HOME
         </div>
         <div ngbDropdown class="dropdown nav-comp">
             <button ngbDropdownToggle class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="dd">
-                Branches
+                BRANCHES
             </button>
             <ul ngbDropdownMenu class="dropdown-menu">
                 <li ngbDropdownItem><a class="dropdown-item" href="#" routerLink="/csit">CSIT</a></li>
@@ -55,10 +38,10 @@
             </ul>
         </div>
         <div class="nav-comp" routerLink="/infrastruture">
-            Infrastructure
+            INFRASTRUCTURE
         </div>
         <div class="nav-comp" routerLink="/faculty">
-            Faculty
+            FACULTY
         </div>
         <div *ngIf="this.getToken(); else elseBlock">
             <div class="nav-comp" routerLink="/userforum">
@@ -72,11 +55,11 @@
         </ng-template>
         
         <div class="nav-comp">
-            Student Club
+            STUDENTS CLUB
         </div>
         <div ngbDropdown class="dropdown nav-comp">
             <button ngbDropdownToggle class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="dd">
-                Contact
+                CONTACT
             </button>
             <ul ngbDropdownMenu class="dropdown-menu">
                 <li ngbDropdownItem><a class="dropdown-item" href="#">Contact Us</a></li>
@@ -106,7 +89,7 @@ M4: To promote and nurture the spirit of innovation and entrepreneurship in our 
 
 M5: To emerge as a Center of Excellence through Research, Consultancy and Development Activities.-->
 
-<footer class="bg-[#0F6C6B] mt-0 text-white  p-4 flex justify-evenly bottom-0" id="f-wrapper">
+<footer class="bg-[#0C134F] mt-0 text-white  p-4 flex justify-evenly bottom-0" id="f-wrapper">
     <div id="f-text" class="text-center">
         <p>Department of Emerging Technologies</p>
         <p>Copyright&#169;2023</p>
@@ -117,3 +100,4 @@ M5: To emerge as a Center of Excellence through Research, Consultancy and Develo
         <p>Vastunagar, Mangalpalli (V), Ibrahimpatan (M), R.R. District, Telangana</p>
     </div>
 </footer>
+</body>
