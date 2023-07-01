@@ -9,6 +9,8 @@ import { CybersecComponent } from './cybersec/cybersec.component';
 import { DatasciComponent } from './datasci/datasci.component';
 import { ForumComponent } from './forum/forum.component';
 import { UserForumComponent } from './user-forum/user-forum.component';
+import { CommentComponent } from './comment/comment.component';
+import { DevteamComponent } from './devteam/devteam.component';
 
 const routes: Routes = [
   {
@@ -46,6 +48,14 @@ const routes: Routes = [
   {
     component:UserForumComponent,
     path:'userforum'
+  },
+  {
+    component:CommentComponent,
+    path:'comment/:id'
+  },
+  {
+    component:DevteamComponent,
+    path:'developers'
   }
 
   
