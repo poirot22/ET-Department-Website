@@ -10,8 +10,3 @@ export class AppComponent{
   title = 'et-website';
 
 }
-
-  
-
-
-}
