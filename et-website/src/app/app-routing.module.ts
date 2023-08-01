@@ -8,7 +8,7 @@ import { AimlComponent } from './aiml/aiml.component';
 import { CybersecComponent } from './cybersec/cybersec.component';
 import { DatasciComponent } from './datasci/datasci.component';
 import { ForumComponent } from './forum/forum.component';
-import { UserForumComponent } from './user-forum/user-forum.component';\
+import { UserForumComponent } from './user-forum/user-forum.component';
 import { CommentComponent } from './comment/comment.component';
 import { DevteamComponent } from './devteam/devteam.component';
 
