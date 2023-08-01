@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ForumComponent } from './forum/forum.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserForumComponent } from './user-forum/user-forum.component';
+import { ReplyComponent } from './reply/reply.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { UserForumComponent } from './user-forum/user-forum.component';
     DatasciComponent,
     ForumComponent,
     UserForumComponent,
+    ReplyComponent,
   ],
   imports: [
     BrowserModule,
