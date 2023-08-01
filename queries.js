@@ -88,7 +88,7 @@ async function getCommentsOnPost(postID){
 }
 
 async function login(loginForm){
-    const student = await Student.findOne({"rollno":loginForm.rollno})
+    const student = await Student.findOne({"rollno":loginForm.rollno.toUpperCase()})
 
     if(student==null){
         return {"message":"Student doesn't exist","status":404}

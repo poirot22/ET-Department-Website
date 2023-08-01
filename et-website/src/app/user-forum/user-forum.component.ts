@@ -70,6 +70,12 @@ export class UserForumComponent {
       console.log(resp)
       this.router.navigateByUrl('home', { skipLocationChange: true }).then(() => {
         this.router.navigate(['/userforum']);
+      })
     })
-  })
-}}
+  }
+
+  deletePost(){
+    
+  }
+
+}
