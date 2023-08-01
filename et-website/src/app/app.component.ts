@@ -8,18 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent{
   title = 'et-website';
-  time = new Date();
-  rxTime = new Date();
-  intervalId:any;
 
-  ngOnInit() {
-    // Using Basic Interval
-    this.intervalId = setInterval(() => {
-      this.time = new Date();
-    }, 1000);
-
-    
-  }
+}
 
   
 
