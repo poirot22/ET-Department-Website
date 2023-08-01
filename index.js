@@ -97,6 +97,17 @@ app.post('/addStudent',(req,res)=>{
     })
 })
 
+app.post('/addFaculty',(req,res)=>{
+    facultyData=req.body 
+
+    queries.addFaculty(facultyData).then(response=>{
+        console.log(response)
+        res.send({"message":response})
+    }).catch(err=>{
+        res.send(err)
+    })
+})
+
 app.post('/addPost',(req,res)=>{
     postData=req.body 
 

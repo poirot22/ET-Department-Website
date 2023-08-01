@@ -60,8 +60,38 @@ const post = new mongoose.Schema({
 })
 
 const faculty = new mongoose.Schema({
-    
+    id:{
+        type:String,
+        required:true
+    },
+    firstName:{
+        type:String,
+        required:true
+    },
+    lastName:{
+        type:String,
+        required:true
+    },
+    designation:{
+        type:String,
+        required:true
+    },
+    picture:{
+        type:String,
+        default:"E:\\Projects\\ET Website\\et-website\\src\\assets\\img\\default-faculty.png"
+    },
+    email:{
+        type:String
+    },
+    specialization:{
+        type:String
+    },
+    publications:{
+        type:Array,
+        default:[]
+    }
 })
 
 module.exports = mongoose.model('Student', student);
 module.exports = mongoose.model('Post', post);
+module.exports = mongoose.model('Faculty', faculty);
