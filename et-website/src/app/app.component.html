@@ -43,10 +43,11 @@
         <div class="nav-comp" routerLink="/faculty">
             FACULTY
         </div>
-        <div *ngIf="this.getToken(); else elseBlock">
-            <div class="nav-comp" routerLink="/userforum">
-                Students Forum
-            </div>
+        <!--<div *ngIf="this.getToken(); else elseBlock">
+            
+        </div>-->
+        <div class="nav-comp" routerLink="/userforum">
+            STUDENTS FORUM
         </div>
         <ng-template #elseBlock>
             <div class="nav-comp" routerLink="/forum">
