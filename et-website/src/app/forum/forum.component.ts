@@ -4,6 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-forum',
   templateUrl: './forum.component.html',
@@ -84,6 +85,8 @@ export class ForumComponent {
   logout(){
     localStorage.removeItem("studentToken")
   }
+
+  
 
 }
 

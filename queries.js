@@ -41,6 +41,7 @@ async function addPost(body){
         return {"message":"Student doesn't exist","status":400}
     }
     const newPost = new Post(body)
+    studentExists.posts.push(newPost._id)
     await newPost.save()
     return {"message":"Post created","status":201,"post added":newPost}
 
@@ -87,7 +88,7 @@ async function getCommentsOnPost(postID){
 }
 
 async function login(loginForm){
-    const student = await Student.findOne({"rollno":loginForm.rollno})
+    const student = await Student.findOne({"rollno":loginForm.rollno.toUpperCase()})
 
     if(student==null){
         return {"message":"Student doesn't exist","status":404}
