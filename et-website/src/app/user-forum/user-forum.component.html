@@ -1,20 +1,20 @@
 <div>
     <div class="text-center p-3">
-        <p class="font-bold text-2xl underline underline-offset-4 m-auto">Students Forum</p>
+        <p class="font-bold text-3xl m-auto text-[#0C134F]">Students Forum</p>
     </div>
     <div class="flex p-3 justify-center items-start">
             <div>
                 <p>Logged in as {{this.userData.rollno}}</p>
-                <p (click)="logout()">Logout</p>
+                <button (click)="logout()" class=" bg-[#0C134F] text-white rounded-lg p-1">Logout</button>
             </div>
-        <div class="w-4/5 p-3">
-                <form [formGroup]="postForm" class="p-2 shadow-lg" (ngSubmit)="post()">
-                    <input type="text" placeholder="Enter title" class="h-8 border border-black w-2/3" formControlName="title"><br><br>
-                    <input type="text" placeholder="Enter body" class="h-32 border border-black  w-2/3" formControlName="content"><br> <br>
-                    <button><a class="text-xl bg-[#0F6C6B] text-white p-2 rounded-lg mt-0">Post</a></button>
+        <div class="w-4/5 p-3 form-group">
+                <form [formGroup]="postForm" class="p-2  bg-white shadow-md rounded form-group" (ngSubmit)="post()">
+                    <input type="text" placeholder="Enter title" class="form-control"  formControlName="title"><br><br>
+                    <input type="text" placeholder="Enter body" class="form-control" formControlName="content"><br> <br>
+                    <button class="pb-2"><a class="text-xl bg-[#0C134F] text-white p-2 rounded-lg mt-0 m-2 ">Post</a></button>
                 </form>
-            <p class="text-2xl font-bold underline ml-8 p-2">Posts</p>
-            <div class="shadow-lg">
+            <p class="text-3xl font-bold ml-8 p-2 text-[#0C134F]">Posts</p>
+            <div class="shadow-md rounded">
                 <div *ngFor="let post of posts.reverse()" class=" p-3" id="post-box">
                     <div class="flex">
                         <div class="text-xl font-semibold p-2" id="post-title">{{post.title}}</div>
@@ -22,8 +22,8 @@
                     </div>
                     <div class="text-md p-1 ml-3">{{post.content}}</div>
                     <div class="mb-0 ml-4 pt-2 justify-evenly">
-                        <a class="text-sm text-white  bg-[#0F6C6B] p-1 mt-6 rounded-md" id="comment-btn" routerLink="/reply/{{post._id}}">Reply</a>
-                        <a class="text-sm text-white  bg-red-700 p-1 mt-6 rounded-md" id="comment-btn" (click)="deletePost()">Delete</a>
+                        <a class="text-sm text-white    bg-[#0C134F] p-1 mt-6 rounded-md" id="comment-btn" routerLink="/reply/{{post._id}}">Reply</a>
+                        <a class="text-sm text-white bg-[#0C134F] p-1 mt-6 rounded-md" id="comment-btn" (click)="deletePost()">Delete</a>
                     </div>
                     
                 </div>

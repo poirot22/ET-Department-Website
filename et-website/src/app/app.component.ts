@@ -20,8 +20,7 @@ export class AppComponent {
 
     
   }
+}
 
   
 
-
-}
