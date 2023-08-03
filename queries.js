@@ -41,6 +41,7 @@ async function addFaculty(body){
     }
 }
 
+
 async function getStudentByRollNo(rollno){
     const student = await Student.findOne({"rollno":rollno})
     if(student==null){
@@ -50,6 +51,8 @@ async function getStudentByRollNo(rollno){
         return {"message":"Student Found","Student Data":student}
     }
 }
+
+
 
 async function addPost(body){
     const studentExists = await Student.findOne({"rollno":body.postedBy})
@@ -126,6 +129,21 @@ async function getAllPosts(){
     return {"message":"Posts returned","status":201,"posts":posts}
 }
 
+async function getFaculty(){
+    const facultyDetails= await Faculty.find();
+    console.log(facultyDetails)
+    return {"message":"Details returned","status":201,"details":facultyDetails}
+}
+
+async function deletePost(postID){
+    const post = await Post.findById(postID)
+
+    if(post!=null){
+        
+    }
+}
+
+
 module.exports.addStudent = addStudent
 module.exports.getStudentByRollNo = getStudentByRollNo
 module.exports.addPost = addPost
@@ -135,3 +153,4 @@ module.exports.addComment =addComment
 module.exports.getAllPosts =getAllPosts
 module.exports.login =login
 module.exports.addFaculty =addFaculty
+module.exports.getFaculty=getFaculty
