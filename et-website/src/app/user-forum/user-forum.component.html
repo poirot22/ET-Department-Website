@@ -15,7 +15,7 @@
                 </form>
             <p class="text-3xl font-bold ml-8 p-2 text-[#0C134F]">Posts</p>
             <div class="shadow-md rounded">
-                <div *ngFor="let post of posts.reverse()" class=" p-3" id="post-box">
+                <div *ngFor="let post of posts.reverse() | paginate: {id:'listing_pagination', itemsPerPage:5, currentPage:page, totalItems:totalRecords}" class=" p-3" id="post-box">
                     <div class="flex">
                         <div class="text-xl font-semibold p-2" id="post-title">{{post.title}}</div>
                         <div class="text-sm font-light p-2 mt-1.5">&#x2022; by {{post.postedBy}} on {{post.postedOn.slice(11,16)}}, {{post.postedOn.slice(0,10) |  date: 'dd/MM/yyyy'}}</div>
@@ -27,7 +27,11 @@
                     </div>
                     
                 </div>
+                <div>
+                    <pagination-controls id="listing_pagination" previousLabel="Prev" nextLabel="Next"  (pageChange)="page= $event"></pagination-controls>
+                </div>
             </div>
+
         </div>
     </div>
 </div>
