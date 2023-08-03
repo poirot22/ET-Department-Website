@@ -18,6 +18,7 @@ import { UserForumComponent } from './user-forum/user-forum.component';
 import { CommentComponent } from './comment/comment.component';
 import { RouterModule } from '@angular/router';
 import { DevteamComponent } from './devteam/devteam.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { DevteamComponent } from './devteam/devteam.component';
     NgbModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

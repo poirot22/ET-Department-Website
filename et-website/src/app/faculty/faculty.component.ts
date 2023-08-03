@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-faculty',
@@ -6,5 +8,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./faculty.component.css']
 })
 export class FacultyComponent {
+  constructor (private http:HttpClient, private router:Router){
 
+  }
+  facultyList:any
+  temp:any
+  ngOnInit(){
+    this.http.get("http://localhost:9000/getFaculty").subscribe(resp=>{
+      this.temp=resp
+      this.facultyList=this.temp.details
+      console.log(resp)
+    });
+  }
 }
