@@ -18,6 +18,9 @@ export class UserForumComponent {
   userData:any
   temp:any
   posts:any
+  data:any
+  totalRecords:any
+  page:number=1
 
   ngOnInit(){
 
@@ -45,6 +48,8 @@ export class UserForumComponent {
               this.temp=resp
               this.posts=this.temp.posts
               console.log(this.posts)
+              this.data=this.posts
+              this.totalRecords=this.data.length
             })
         })
     })

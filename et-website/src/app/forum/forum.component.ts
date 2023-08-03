@@ -26,11 +26,14 @@ export class ForumComponent {
   posts:any
   temp:any
   userData:any
+  totalRecords:any
+  page:number=1
   ngOnInit(){
     this.http.get("http://localhost:9000/getAllPosts").subscribe(resp=>{
       //console.log(resp)
       this.temp=resp
       this.posts=this.temp.posts
+      this.totalRecords=this.posts.length
       console.log(this.posts)
     })
   }
