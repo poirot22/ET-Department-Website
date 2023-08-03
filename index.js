@@ -67,10 +67,23 @@ app.get("/getStudentByRollNo/:rollno",(req,res)=>{
     })
 })
 
+app.get('/getCommentsOnPost/:postID',(req,res)=>{
+    postID=req.params.postID 
+    queries.getCommentsOnPost(postID).then(response=>{
+        res.status(response.status).send(response)
+    })
+})
+
 app.get("/getPostById/:postID",(req,res)=>{
     postID=req.params.postID 
     queries.getPostById(postID).then(response=>{
         res.status(response.status).send(response)
+    })
+})
+
+app.get("/getFaculty",(req, res)=>{
+    queries.getFaculty().then(response=>{
+        res.status(200).send(response)
     })
 })
 

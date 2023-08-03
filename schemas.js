@@ -76,9 +76,13 @@ const faculty = new mongoose.Schema({
         type:String,
         required:true
     },
+    education:{
+        type:String,
+        required:true
+    },
     picture:{
         type:String,
-        default:"E:\\Projects\\ET Website\\et-website\\src\\assets\\img\\default-faculty.png"
+        default:"https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg"
     },
     email:{
         type:String
