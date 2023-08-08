@@ -66,10 +66,23 @@ app.get("/getStudentByRollNo/:rollno",(req,res)=>{
     })
 })
 
+app.get('/getCommentsOnPost/:postID',(req,res)=>{
+    postID=req.params.postID 
+    queries.getCommentsOnPost(postID).then(response=>{
+        res.status(response.status).send(response)
+    })
+})
+
 app.get("/getPostById/:postID",(req,res)=>{
     postID=req.params.postID 
     queries.getPostById(postID).then(response=>{
         res.status(response.status).send(response)
+    })
+})
+
+app.get("/getFaculty",(req, res)=>{
+    queries.getFaculty().then(response=>{
+        res.status(200).send(response)
     })
 })
 
@@ -89,6 +102,17 @@ app.post('/addStudent',(req,res)=>{
     studentData = req.body
     //console.log(studentData)
     queries.addStudent(studentData).then(response=>{
+        console.log(response)
+        res.send({"message":response})
+    }).catch(err=>{
+        res.send(err)
+    })
+})
+
+app.post('/addFaculty',(req,res)=>{
+    facultyData=req.body 
+
+    queries.addFaculty(facultyData).then(response=>{
         console.log(response)
         res.send({"message":response})
     }).catch(err=>{

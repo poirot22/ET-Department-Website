@@ -8,6 +8,7 @@ mongoose.set("strictQuery", false);
 
 const Student = mongoose.model("Student",schemas.student)
 const Post = mongoose.model("Post",schemas.post)
+const Faculty = mongoose.model("Faculty",schemas.faculty)
 
 async function addStudent(body){
     const studentExists = await Student.findOne({"rollno":body.rollno})
@@ -25,6 +26,22 @@ async function addStudent(body){
     }
 }
 
+async function addFaculty(body){
+    const facultyExists = await Faculty.findOne({"id":body.id})
+    
+    
+    console.log(facultyExists)
+    if(facultyExists==null){
+        const newFaculty = new Faculty(body)
+        await newFaculty.save()
+        return "Faculty Added"
+    }
+    else{
+        return "Faculty already exists"
+    }
+}
+
+
 async function getStudentByRollNo(rollno){
     const student = await Student.findOne({"rollno":rollno})
     if(student==null){
@@ -34,6 +51,8 @@ async function getStudentByRollNo(rollno){
         return {"message":"Student Found","Student Data":student}
     }
 }
+
+
 
 async function addPost(body){
     const studentExists = await Student.findOne({"rollno":body.postedBy})
@@ -110,6 +129,21 @@ async function getAllPosts(){
     return {"message":"Posts returned","status":201,"posts":posts}
 }
 
+async function getFaculty(){
+    const facultyDetails= await Faculty.find();
+    console.log(facultyDetails)
+    return {"message":"Details returned","status":201,"details":facultyDetails}
+}
+
+async function deletePost(postID){
+    const post = await Post.findById(postID)
+
+    if(post!=null){
+        
+    }
+}
+
+
 module.exports.addStudent = addStudent
 module.exports.getStudentByRollNo = getStudentByRollNo
 module.exports.addPost = addPost
@@ -118,3 +152,5 @@ module.exports.getCommentsOnPost = getCommentsOnPost
 module.exports.addComment =addComment
 module.exports.getAllPosts =getAllPosts
 module.exports.login =login
+module.exports.addFaculty =addFaculty
+module.exports.getFaculty=getFaculty
