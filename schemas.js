@@ -96,6 +96,7 @@ const faculty = new mongoose.Schema({
     }
 })
 
+
 module.exports = mongoose.model('Student', student);
 module.exports = mongoose.model('Post', post);
 module.exports = mongoose.model('Faculty', faculty);
