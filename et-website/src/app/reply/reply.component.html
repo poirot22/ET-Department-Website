@@ -1,6 +1,30 @@
-<p>reply works!</p>
-<!--<form [formGroup]="postForm" class="p-2 shadow-lg" (ngSubmit)="post()">
-    <input type="text" placeholder="Enter title" class="h-8 border border-black w-2/3" formControlName="title"><br><br>
-    <input type="text" placeholder="Enter body" class="h-32 border border-black  w-2/3" formControlName="content"><br> <br>
-    <button><a class="text-xl bg-[#0F6C6B] text-white p-2 rounded-lg mt-0">Post</a></button>
-</form>-->
+<!--<div class="p-4">
+    <div class="shadow-lg p-4">
+
+        <div class="flex">
+            <div class="text-xl font-semibold p-2" id="post-title">{{post.title}}</div>
+            <div class="text-sm font-light p-2 mt-1.5">&#x2022; by {{post.postedBy}} on {{post.postedOn.slice(11,16)}}, {{post.postedOn.slice(0,10) |  date: 'dd/MM/yyyy'}}</div>
+
+        </div>
+        <div class="text-md p-1 ml-3">{{post.content}}</div>-->
+
+        <!--<div class="p-2">
+            <form [formGroup]="commentForm" (ngSubmit)="addComment()">
+                <input type="text" placeholder="Enter Comment" formControlName="comment" class=" mb-1"> <br>
+                <button><a class="text text-white   bg-[#0C134F] p-1 mt-6 rounded-md">Post your comment</a></button>
+        </form>
+        </div>
+
+        <div>
+            <h3 class="underline text-black">Comments</h3>
+            <div *ngFor="let comment of this.comments">
+                <div class="p-2">
+                    <a class="underline">{{comment.postedBy}}</a> 
+                    <br>
+                    <a>{{comment.comment}}</a>
+                </div>
+                
+            </div>
+        </div>
+        
+</div>-->

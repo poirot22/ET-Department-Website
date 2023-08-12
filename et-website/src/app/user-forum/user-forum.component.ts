@@ -21,7 +21,7 @@ export class UserForumComponent {
   data:any
   totalRecords:any
   page:number=1
-
+  token:any=""
   ngOnInit(){
 
     var headers_object = new HttpHeaders({
@@ -35,6 +35,7 @@ export class UserForumComponent {
     const httpOptions = {
       headers: headers_object
     };
+    this.token=localStorage.getItem('studentToken')
 
     this.http.get("http://localhost:9000/verify",httpOptions).subscribe(resp=>{
         this.temp=resp 

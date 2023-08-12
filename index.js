@@ -86,6 +86,14 @@ app.get("/getFaculty",(req, res)=>{
     })
 })
 
+app.get("/getFacultyById/:facultyID",(req,res)=>{
+    facultyID=req.params.facultyID
+    queries.getFacultyById(facultyID).then(response=>{
+        res.status(200).send(response)
+    })
+})
+
+
 app.get("/verify",(req,res)=>{
     res.send({"Student Roll Number":req.studentRollNo})
 })

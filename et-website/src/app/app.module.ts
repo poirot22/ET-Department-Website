@@ -18,7 +18,9 @@ import { UserForumComponent } from './user-forum/user-forum.component';
 import { CommentComponent } from './comment/comment.component';
 import { RouterModule } from '@angular/router';
 import { DevteamComponent } from './devteam/devteam.component';
-// import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { StudentsclubComponent } from './studentsclub/studentsclub.component';
+import { FacultyprofileComponent } from './facultyprofile/facultyprofile.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { DevteamComponent } from './devteam/devteam.component';
     DatasciComponent,
     ForumComponent,
     UserForumComponent,
+    CommentComponent,
+    DevteamComponent,
   ],
   imports: [
     BrowserModule,

@@ -8,11 +8,31 @@
         </div>
         <div class="text-md p-1 ml-3">{{post.content}}</div>
 
+        <div *ngIf="this.token!=''" class="p-2">
+            <form [formGroup]="commentForm" (ngSubmit)="addComment()">
+                <input type="text" placeholder="Enter Comment" formControlName="comment" class=" mb-1"> <br>
+                <button><a class="text text-white   bg-[#0C134F] p-1 mt-6 rounded-md">Post your comment</a></button>
+        </form>
+        </div>
+
         <div>
-            <button><a class="text text-white   bg-[#0C134F] p-1 mt-6 rounded-md">Post your comment</a></button>
+            <h3 class="underline text-black">Comments</h3>
+            <div *ngFor="let comment of this.comments">
+                <div class="p-2">
+                    <a class="underline">{{comment.postedBy}}</a> 
+                    <br>
+                    <a>{{comment.comment}}</a>
+                </div>
+                
+            </div>
         </div>
         
 </div>
 
 </div>
 
+<!--<form [formGroup]="postForm" class="p-2  bg-white shadow-md rounded form-group" (ngSubmit)="post()">
+                    <input type="text" placeholder="Enter title" class="form-control"  formControlName="title"><br><br>
+                    <input type="text" placeholder="Enter body" class="form-control" formControlName="content"><br> <br>
+                    <button class="pb-2"><a class="text-xl bg-[#0C134F] text-white p-2 rounded-lg mt-0 m-2 ">Post</a></button>
+                </form>-->
