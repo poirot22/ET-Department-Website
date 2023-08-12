@@ -14,13 +14,13 @@
                 <div *ngFor="let faculty of this.facultyList">
                     <div class="">
                         <div class="card" style="width: 18rem;">
-                            <img class="card-img-top h-60 w-56 rounded-ms hover:brightness-125" src="{{this.faculty.picture}}" alt="Faculty Picture">
+                            <img class="card-img-top h-60 w-56 rounded-ms hover:brightness-125" src="https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg" alt="Faculty Picture">
                             <div class="card-body">
                               <h5 class="card-title text-center text-2xl">{{faculty.firstName}}</h5>
                               <h6 class="card-text text-center  details" >{{faculty.designation}}</h6>
                               <hr>
                               <div class="flex justify-center">
-                              <button class="button items-center  font-normal"><a class="text bg-[#0C134F] text-white p-2 rounded-lg mt-0 ">View Profile</a></button>
+                              <button class="button items-center  font-normal"><a class="text bg-[#0C134F] text-white p-2 rounded-lg mt-0 " routerLink="/facultyprofile">View Profile</a></button>
                                 </div>
                             </div>
                         </div>

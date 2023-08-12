@@ -11,13 +11,22 @@ import { ForumComponent } from './forum/forum.component';
 import { UserForumComponent } from './user-forum/user-forum.component';
 import { CommentComponent } from './comment/comment.component';
 import { DevteamComponent } from './devteam/devteam.component';
-import { ReplyComponent } from './reply/reply.component';
+import { StudentsclubComponent } from './studentsclub/studentsclub.component';
+import { FacultyprofileComponent } from './facultyprofile/facultyprofile.component';
 
 
 const routes: Routes = [
   {
     component:HomeComponent,
     path:'home'
+  },
+  {
+    component:StudentsclubComponent,
+    path:'studentsclub'
+  },
+  {
+    component:FacultyprofileComponent,
+    path:'facultyprofile'
   },
   {
     component:InfrastructureComponent,
