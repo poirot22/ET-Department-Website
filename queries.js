@@ -143,6 +143,16 @@ async function deletePost(postID){
     }
 }
 
+async function getFacultyById(facultyID){
+    const faculty=await Faculty.findById(facultyID)
+
+    if(faculty!=null){
+        return {"message":"Faculty found","Faculty Data":faculty}
+    }
+    else{
+        return {"message":"Faculty not found","status":404}
+    }
+}
 
 module.exports.addStudent = addStudent
 module.exports.getStudentByRollNo = getStudentByRollNo
@@ -154,3 +164,4 @@ module.exports.getAllPosts =getAllPosts
 module.exports.login =login
 module.exports.addFaculty =addFaculty
 module.exports.getFaculty=getFaculty
+module.exports.getFacultyById=getFacultyById
