@@ -36,6 +36,12 @@ export class ForumComponent {
       this.totalRecords=this.posts.length
       console.log(this.posts)
     })
+}
+  //function to check token is present or no
+  checkToken(){
+    if(localStorage.getItem("token")){
+      return true
+    } else{ return false}
   }
 
   loginStudent(){

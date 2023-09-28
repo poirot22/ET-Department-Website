@@ -1,7 +1,6 @@
 {
   "name": "et-website",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,7 +8,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@angular/cli": "^15.2.6",
+    "@angular/cli": "^15.2.7",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "express": "^4.18.2",
@@ -18,5 +17,15 @@
     "mongoose": "^7.0.5",
     "nodemon": "^2.0.22",
     "popper.js": "^1.16.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/poirot22/ET-Department-Website.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/poirot22/ET-Department-Website/issues"
+  },
+  "homepage": "https://github.com/poirot22/ET-Department-Website#readme",
+  "description": ""
 }

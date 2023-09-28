@@ -36,8 +36,6 @@ import { FacultyprofileComponent } from './facultyprofile/facultyprofile.compone
     UserForumComponent,
     CommentComponent,
     DevteamComponent,
-    StudentsclubComponent,
-    FacultyprofileComponent,
   ],
   imports: [
     BrowserModule,

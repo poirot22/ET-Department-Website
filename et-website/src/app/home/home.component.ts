@@ -12,6 +12,9 @@ export class HomeComponent {
 
     }
     newsArray:Array<any>=[]
+    eventsArray:Array<any>=[{"title":"et","date":"12/12/12","description":"et event","link":"adsklfa;kdf;"},
+    {"title":"et","date":"12/12/12","description":"et event","link":"adsklfa;kdf;"},{"title":"et","date":"12/12/12","description":"et event","link":"adsklfa;kdf;"}
+  ,{"title":"et","date":"12/12/12","description":"et event","link":"adsklfa;kdf;"},{"title":"et","date":"12/12/12","description":"et event","link":"adsklfa;kdf;"}]
     temp:any
     ngOnInit(){
       this.http.get("https://newsapi.org/v2/top-headlines?country=in&category=science&pageSize=8&apiKey=deeb4ecd2eb54e319c67da4554b8eb7a").subscribe(resp=>{
@@ -24,4 +27,5 @@ export class HomeComponent {
         console.log(this.newsArray)
       })
     }
+    
 }

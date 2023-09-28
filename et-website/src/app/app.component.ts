@@ -7,7 +7,7 @@ import { HelperService } from './helper.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent{
   title = 'et-website';
   time = new Date();
   rxTime = new Date();
@@ -26,6 +26,5 @@ export class AppComponent {
     
   }
 }
-
   
 
