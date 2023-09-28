@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { HelperService } from '../helper.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-    constructor(private http:HttpClient){
+    constructor(private http:HttpClient,private helper:HelperService){
 
     }
     newsArray:Array<any>=[]

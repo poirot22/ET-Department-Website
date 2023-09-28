@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HelperService } from './helper.service';
 
 
 @Component({
@@ -11,6 +12,10 @@ export class AppComponent {
   time = new Date();
   rxTime = new Date();
   intervalId:any;
+
+  constructor(public helper:HelperService){
+
+  }
 
   ngOnInit() {
     // Using Basic Interval

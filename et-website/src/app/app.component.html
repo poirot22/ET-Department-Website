@@ -43,9 +43,18 @@
         <div class="nav-comp" routerLink="/faculty">
             FACULTY
         </div>
-        <div class="nav-comp" routerLink="/forum">
-            STUDENTS FORUM
+
+        <div *ngIf="this.helper.loggedIn(); else elseBlock">
+            <div class="nav-comp" routerLink="/userforum">
+                STUDENTS FORUM
+            </div>
         </div>
+        <ng-template #elseBlock>
+            <div class="nav-comp" routerLink="/forum">
+                STUDENTS FORUM
+            </div>
+        </ng-template>
+    
         
         <div class="nav-comp" routerLink="/studentsclub">
             STUDENTS CLUB
@@ -59,8 +68,7 @@
                 <li ngbDropdownItem><a class="dropdown-item" href="#" routerLink="/developers">Development Team</a></li>
             </ul>
         </div>
-
-      </div>
+</div>
 
   <router-outlet></router-outlet>
       
