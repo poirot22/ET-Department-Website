@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UserForumComponent } from '../user-forum/user-forum.component';
@@ -13,7 +13,7 @@ import { HelperService } from '../helper.service';
 })
 export class CommentComponent {
 
-  constructor(private route:ActivatedRoute,private http:HttpClient,private helper:HelperService){}
+  constructor(private route:ActivatedRoute,private http:HttpClient,private helper:HelperService,private router:Router){}
 
   commentForm=new FormGroup({
     comment: new FormControl(),
@@ -51,6 +51,9 @@ export class CommentComponent {
 
     this.http.put("http://localhost:9000/addComment/"+this.postId,this.commentBody).subscribe(resp=>{
       console.log(resp)
+      this.router.navigateByUrl('home', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/comment/'+this.postId]);
+      });
     })
   }
 }
