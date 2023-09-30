@@ -1,104 +1,78 @@
 <!-- <div class="wrapper">
   <!header starts here -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
 <body>
-
-
-    <div class="name ">
-            <div class="flex justify-around m-0 p-0">
-                <div class="grid grid-cols-1">
-                    <div class="logo">
-                        <img  src="https://pbs.twimg.com/profile_images/1482758580634005506/SvUki-Xz_400x400.jpg" alt="">
-                    </div>
-                    <div><h1 class=" mt-2 mb-2 text-xl font-bold cvr">CVR College of Engineering</h1></div>
+    <div class="w-screen grid grid-cols-7 h-auto">
+        <div class="bg-[#0C134F] text-white h-full w-full grid justify-center my-auto">
+            LOGO
+        </div>
+        <div class="col-span-5 bg-[#0C134F]  text-white flex flex-col gap-2">
+            <div class="flex justify-center m-2">
+                ET Department
+            </div>
+            <hr class="text-white">
+            <div class="flex justify-around items-center m-2">
+                <div class="nav-comp" routerLink="/home">HOME</div>
+                <div ngbDropdown class="dropdown nav-comp relative">
+                    <button ngbDropdownToggle class="btn btn-secondary dropdown-toggle" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false" id="dd">
+                        BRANCHES
+                    </button>
+                    <ul ngbDropdownMenu class="dropdown-menu mt-0">
+                        <li ngbDropdownItem><a class="dropdown-item" href="#" routerLink="/csit">CSIT</a></li>
+                        <li ngbDropdownItem><a class="dropdown-item" href="#" routerLink="/aiml">AI/ML</a></li>
+                        <li ngbDropdownItem><a class="dropdown-item" href="#" routerLink="/datascience">Data Science</a>
+                        </li>
+                        <li ngbDropdownItem><a class="dropdown-item" href="#" routerLink="/cybersecurity">Cyber
+                                Security</a></li>
+                    </ul>
                 </div>
-                <div class="grid">
-                    <h5 class="font-bold">Department of</h5>
-                    <h5 class="font-bold">Emerging Technologies</h5>
+                <div class="nav-comp" routerLink="/infrastruture">INFRASTRUCTURE</div>
+                <div class="nav-comp" routerLink="/faculty">FACULTY</div>
+                <div *ngIf="this.helper.loggedIn(); else elseBlock">
+                    <div class="nav-comp" routerLink="/userforum">STUDENTS FORUM</div>
                 </div>
-                <div class="w-64">{{ time | date: 'hh:mm:ss a' }}</div>
+                <ng-template #elseBlock>
+                    <div class="nav-comp" routerLink="/forum">STUDENTS FORUM</div>
+                </ng-template>
+                <div class="nav-comp" routerLink="/studentsclub">STUDENTS CLUB</div>
+                <div ngbDropdown class="dropdown nav-comp relative">
+                    <button ngbDropdownToggle class="btn btn-secondary dropdown-toggle" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false" id="dd">
+                        CONTACT
+                    </button>
+                    <ul ngbDropdownMenu class="dropdown-menu mt-0">
+                        <li ngbDropdownItem><a class="dropdown-item" href="#">Contact Us</a></li>
+                        <li ngbDropdownItem><a class="dropdown-item" href="#" routerLink="/developers">Development
+                                Team</a></li>
+                    </ul>
+                </div>
             </div>
+
+
+        </div>
+        <div class="bg-[#0C134F] flex justify-center">
+            <div class="clock m-auto">
+                <div class="hour" id="hour"></div>
+                <div class="minute" id="minute"></div>
+                <div class="second" id="second"></div>
+            </div>
+        </div>
     </div>
+    <router-outlet></router-outlet>
 
-      <div class="navbar">
-        <div class="nav-comp" routerLink="/home">
-            HOME
+    <footer class="bg-[#0C134F] mt-0 text-white  p-4 flex justify-evenly bottom-0" id="f-wrapper">
+        <div id="f-text" class="text-center">
+            <p>Department of Emerging Technologies</p>
+            <p>Copyright&#169;2023</p>
         </div>
-        <div ngbDropdown class="dropdown nav-comp">
-            <button ngbDropdownToggle class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="dd">
-                BRANCHES
-            </button>
-            <ul ngbDropdownMenu class="dropdown-menu">
-                <li ngbDropdownItem><a class="dropdown-item" href="#" routerLink="/csit">CSIT</a></li>
-                <li ngbDropdownItem><a class="dropdown-item" href="#" routerLink="/aiml">AI/ML</a></li>
-                <li ngbDropdownItem><a class="dropdown-item" href="#" routerLink="/datascience">Data Science</a></li>
-                <li ngbDropdownItem><a class="dropdown-item" href="#" routerLink="/cybersecurity">Cyber Security</a></li>
-            </ul>
+        <div>
+            <p>CVR College of Engineering</p>
+            <p>(An UGC Autonomous Institution with NAAC 'A' Grade, Affiliated To JNTUH)</p>
+            <p>Vastunagar, Mangalpalli (V), Ibrahimpatan (M), R.R. District, Telangana</p>
         </div>
-        <div class="nav-comp" routerLink="/infrastruture">
-            INFRASTRUCTURE
-        </div>
-        <div class="nav-comp" routerLink="/faculty">
-            FACULTY
-        </div>
-
-        <div *ngIf="this.helper.loggedIn(); else elseBlock">
-            <div class="nav-comp" routerLink="/userforum">
-                STUDENTS FORUM
-            </div>
-        </div>
-        <ng-template #elseBlock>
-            <div class="nav-comp" routerLink="/forum">
-                STUDENTS FORUM
-            </div>
-        </ng-template>
-    
-        
-        <div class="nav-comp" routerLink="/studentsclub">
-            STUDENTS CLUB
-        </div>
-        <div ngbDropdown class="dropdown nav-comp">
-            <button ngbDropdownToggle class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="dd">
-                CONTACT
-            </button>
-            <ul ngbDropdownMenu class="dropdown-menu">
-                <li ngbDropdownItem><a class="dropdown-item" href="#">Contact Us</a></li>
-                <li ngbDropdownItem><a class="dropdown-item" href="#" routerLink="/developers">Development Team</a></li>
-            </ul>
-        </div>
-</div>
-
-  <router-outlet></router-outlet>
-      
-
-
-<!--Vision
-To evolve as a Center of Excellence in emerging areas, impart quality education to produce ethical, motivated and skilled professionals to meet the ever-increasing technological & social challenges.
-
- 
-
-Mission
-M1: To impart students with self-discipline, hard work, all-round personality development and creative problem-solving approach.
-
-M2: To provide quality-education by using the latest infrastructure and nurturing collaborative culture.
-
-M3: To provide students an opportunity to learn both foundational and experimental components in emerging areas.
-
-M4: To promote and nurture the spirit of innovation and entrepreneurship in our students.
-
-M5: To emerge as a Center of Excellence through Research, Consultancy and Development Activities.-->
-
-<footer class="bg-[#0C134F] mt-0 text-white  p-4 flex justify-evenly bottom-0" id="f-wrapper">
-    <div id="f-text" class="text-center">
-        <p>Department of Emerging Technologies</p>
-        <p>Copyright&#169;2023</p>
-    </div>    
-    <div >
-        <p>CVR College of Engineering</p>
-        <p>(An UGC Autonomous Institution with NAAC 'A' Grade, Affiliated To JNTUH)</p>
-        <p>Vastunagar, Mangalpalli (V), Ibrahimpatan (M), R.R. District, Telangana</p>
-    </div>
-</footer>
+    </footer>
 </body>

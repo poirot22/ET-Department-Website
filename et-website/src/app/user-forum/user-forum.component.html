@@ -2,39 +2,55 @@
     <div class="text-center p-3">
         <p class="font-bold text-3xl m-auto text-[#0C134F]">Students Forum</p>
     </div>
-    <div class="flex p-3 justify-center items-start">
-            <div>
-                <p>Logged in as {{this.userData.rollno}}</p>
-                <button (click)="logout()" class=" bg-[#0C134F] text-white rounded-lg p-1">Logout</button>
+    <div class="relative inline-block text-left flex justify-center">
+        <button (click)="toggleDropdown()" class="flex items-center space-x-2 p-2 rounded-full bg-sky-900 text-white">
+            <div class="w-20 h-8 rounded-full overflow-hidden">
+                <div class="text-white pt-1 pl-1">{{ userData.firstName }}</div>
             </div>
-        <div class="w-4/5 p-3 form-group">
-                <form [formGroup]="postForm" class="p-2  bg-white shadow-md rounded form-group" (ngSubmit)="post()">
-                    <input type="text" placeholder="Enter title" class="form-control"  formControlName="title"><br><br>
-                    <input type="text" placeholder="Enter body" class="form-control" formControlName="content"><br> <br>
-                    <button class="pb-2"><a class="text-xl bg-[#0C134F] text-white p-2 rounded-lg mt-0 m-2 ">Post</a></button>
-                </form>
-            <p class="text-3xl font-bold ml-8 p-2 text-[#0C134F]">Posts</p>
-            <div class="shadow-md rounded">
-                <div *ngFor="let post of posts.reverse() | paginate: {id:'listing_pagination', itemsPerPage:5, currentPage:page, totalItems:totalRecords}" class=" p-3" id="post-box">
-                    <div class="flex">
-                        <div class="text-xl font-semibold p-2" id="post-title">{{post.title}}</div>
-                        <div class="text-sm font-light p-2 mt-1.5">&#x2022; by {{post.postedBy}} on {{post.postedOn.slice(11,16)}}, {{post.postedOn.slice(0,10) |  date: 'dd/MM/yyyy'}}</div>
-                    </div>
-                    <div class="text-md p-1 ml-3">{{post.content}}</div>
-                    <div class="mb-0 ml-4 pt-2 justify-evenly">
-                        <a class="text-sm text-white    bg-[#0C134F] p-1 mt-6 rounded-md" id="comment-btn" routerLink="/comment/{{post._id}}">Reply</a>
-                        <a class="text-sm text-white bg-[#0C134F] p-1 mt-6 rounded-md" id="comment-btn" (click)="deletePost()">Delete</a>
-                    </div>
-                    
-                </div>
-                <div>
-                    <pagination-controls id="listing_pagination" previousLabel="Prev" nextLabel="Next"  (pageChange)="page= $event"></pagination-controls>
-                </div>
-            </div>
+            <span>&#9662;</span>
+        </button>
 
+        <div *ngIf="isDropdownOpen"
+            class="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+            <div class="py-1 flex flex-col justify-center" role="menu" aria-orientation="vertical"
+                aria-labelledby="options-menu">
+                <button class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                    role="menuitem">Profile</button>
+                <button (click)="logout()"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                    role="menuitem">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex p-3 justify-center items-start">
+        <div class="w-4/5 p-3">
+            <form [formGroup]="postForm" class="bg-white shadow-md rounded p-2 flex flex-col justify-center"
+                (ngSubmit)="post()">
+                <input type="text" placeholder="Enter title" class="form-control mb-4" formControlName="title">
+                <input type="text" placeholder="Enter body" class="form-control mb-4" formControlName="content">
+                <button><a class="text-xl bg-sky-900 text-white p-2 rounded-lg mt-0 m-2">Post</a></button>
+            </form>
+            <p class="text-3xl font-bold ml-8 p-2 text-[#0C134F]">Posts</p>
+            <div class="">
+                <div *ngFor="let post of posts.reverse() | paginate: {id:'listing_pagination', itemsPerPage:5, currentPage:page, totalItems:totalRecords}"
+                    class="shadow-md m-3 rounded-lg" id="post-box">
+                    <div class="flex bg-sky-900 p-2 rounded-t-lg">
+                        <div class=" text-white text-xl font-semibold p-2" id="post-title">{{ post.title }}</div>
+                        <div class="text-sm font-light p-2 mt-1.5  text-white">&#x2022; by {{ post.postedBy }} on {{
+                            post.postedOn.slice(11,16) }}, {{ post.postedOn.slice(0,10) | date: 'dd/MM/yyyy' }}</div>
+                    </div>
+                    <div class="text-md p-1 ml-3 bg-slate-200 rounded-bl-lg p-3">{{ post.content }}</div>
+                    <div class="flex justify-end p-2">
+                        <a class="text-sm text-white bg-sky-900 p-1 rounded-md" id="comment-btn"
+                            routerLink="/reply/{{ post._id }}">Comment</a>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <pagination-controls id="listing_pagination" previousLabel="Prev" nextLabel="Next"
+                        (pageChange)="page = $event"></pagination-controls>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
-
-

@@ -1,8 +1,4 @@
-<div
-  id="carouselExampleAutoplaying"
-  class="carousel slide"
-  data-bs-ride="carousel"
->
+<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img src="assets\img\hod.png" class="d-block w-100" alt="..." />
@@ -10,27 +6,17 @@
     <div class="carousel-item ">
       <img src="assets/img/img4.jpg" class="d-block w-100" alt="..." />
     </div>
-   <!--- <div class="carousel-item ">
+    <!--- <div class="carousel-item ">
       <img src="assets\img\faculty2.png" class="d-block w-100" alt="..." />
     </div> -->
-    
-    
+
+
   </div>
-  <button
-    class="carousel-control-prev"
-    type="button"
-    data-bs-target="#carouselExampleAutoplaying"
-    data-bs-slide="prev"
-  >
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
-  <button
-    class="carousel-control-next"
-    type="button"
-    data-bs-target="#carouselExampleAutoplaying"
-    data-bs-slide="next"
-  >
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
@@ -40,7 +26,7 @@
 <!-- Content wrapper -->
 <div class="contents-wrapper flex justify-evenly">
   <!-- Contents starts here -->
-  <div class="w-2/3 content m-4">
+  <div class="w-2/3 content ">
     <h1 class="text-4xl font-extrabold" id="aboutus">About us</h1>
     <br />
     <p>
@@ -80,16 +66,13 @@
     </p>
     <br />
   </div>
-  <div class="flex-none w-1/3 news m-4" id="news-box">
+  <div class="flex-none w-1/3 news" id="news-box">
     <div>
-      <p class="text-4xl p-2 text-center font-extrabold">
+      <p class="text-4xl text-center font-extrabold">
         Current Affairs
       </p>
       <div class="shadow-lg mt-3">
-        <div
-          *ngFor="let news of this.newsArray"
-          class="border text-blue-800 p-2"
-        >
+        <div *ngFor="let news of this.newsArray" class="border text-blue-800 p-2">
           <a href="{{ news.url }}">{{ news.title }}</a>
         </div>
       </div>
@@ -162,7 +145,7 @@
 </div>
 
 
-  <!--<div class="mission-outcomes" >
+<!--<div class="mission-outcomes" >
   <h2 id="mission-head" class="text-4xl">Missions of the Department</h2>
     <ul class="mt-1">
       <li><strong>M1</strong>: To impart students with self-discipline, hard work, all-round personality development and creative problem-solving approach.</li>
