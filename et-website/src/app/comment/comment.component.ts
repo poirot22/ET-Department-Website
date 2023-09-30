@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UserForumComponent } from '../user-forum/user-forum.component';
+import { HelperService } from '../helper.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { UserForumComponent } from '../user-forum/user-forum.component';
 })
 export class CommentComponent {
 
-  constructor(private route:ActivatedRoute,private http:HttpClient,){}
+  constructor(private route:ActivatedRoute,private http:HttpClient,private helper:HelperService){}
 
   commentForm=new FormGroup({
     comment: new FormControl(),
@@ -39,13 +40,17 @@ export class CommentComponent {
   }
   postedComment:any=""
   commentBody:any=""
-  addComment(){
+  async addComment(){
     this.postedComment=this.commentForm.value
     console.log(this.postedComment.comment)
     this.commentBody={
-      "comment":this.postedComment,
-      
+      "comment":this.postedComment.comment,
+      "postedBy": await this.helper.getUser().then(resp=>{return resp.toString()}),
     }
     console.log(this.commentBody)
+
+    this.http.put("http://localhost:9000/addComment/"+this.postId,this.commentBody).subscribe(resp=>{
+      console.log(resp)
+    })
   }
 }
