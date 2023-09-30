@@ -8,7 +8,7 @@
         </div>
         <div class="text-md p-1 ml-3">{{post.content}}</div>
 
-        <div *ngIf="this.token!=''" class="p-2">
+        <div *ngIf="this.token!=undefined" class="p-2">
             <form [formGroup]="commentForm" (ngSubmit)="addComment()">
                 <input type="text" placeholder="Enter Comment" formControlName="comment" class=" mb-1"> <br>
                 <button><a class="text text-white   bg-[#0C134F] p-1 mt-6 rounded-md">Post your comment</a></button>

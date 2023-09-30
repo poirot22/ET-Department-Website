@@ -40,8 +40,7 @@
                 </div>
                 <div class="text-md p-3 ml-3 bg-slate-200 rounded-bl-lg">{{post.content}}</div>
                 <div class=" m-2 flex justify-end">
-                    <a class="text-sm  text text-white  bg-sky-900 p-2  rounded-md font-light cursor-pointer" onclick="alert('Please login to comment.')"
-                        id="comment-btn">Comment</a>
+                    <a class="text-sm  text text-white  bg-sky-900 p-2  rounded-md font-light cursor-pointer" routerLink="/comment/{{post._id}}" id="comment-btn">Comment</a>
                 </div>
             </div>
             <div class="flex justify-center">
