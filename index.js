@@ -162,6 +162,16 @@ app.put('/addComment/:postID', (req, res) => {
     });
 });
 
+
+//DELETE Methods
+app.delete('/deletePost/:postID',(req,res)=>{
+    postID=req.params.postID 
+
+    queries.deletePost(postID).then(response=>{
+        res.status(response.status).send(response)
+    })
+})
+
 app.listen(port,()=>{
     console.log('listening at port '+port)
 })

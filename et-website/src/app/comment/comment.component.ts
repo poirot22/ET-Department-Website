@@ -39,13 +39,19 @@ export class CommentComponent {
   }
   postedComment:any=""
   commentBody:any=""
+  rollno:any=""
   addComment(){
     this.postedComment=this.commentForm.value
     console.log(this.postedComment.comment)
+    this.rollno=localStorage.getItem('rollno')
     this.commentBody={
       "comment":this.postedComment,
-      
+      "postedBy":this.rollno
     }
-    console.log(this.commentBody)
+
+    const resp=this.http.put("http://localhost:9000/addComment/"+this.postId,this.commentBody).subscribe(resp=>{
+      console.log(resp)
+    })  
+    window.location.reload()
   }
 }

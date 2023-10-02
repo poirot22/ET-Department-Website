@@ -62,6 +62,7 @@ async function addPost(body){
     const newPost = new Post(body)
     studentExists.posts.push(newPost._id)
     await newPost.save()
+    studentExists.save()  
     return {"message":"Post created","status":201,"post added":newPost}
 
 }
@@ -136,11 +137,20 @@ async function getFaculty(){
 }
 
 async function deletePost(postID){
+    console.log('postId',postID)
     const post = await Post.findById(postID)
-
-    if(post!=null){
-        
+    if(post==null){
+        return {"message":"Post doesn't exist","status":404}
     }
+    console.log('post',post)
+    const rollno=post.postedBy
+    const res=Post.findByIdAndDelete(postID)
+    console.log('result',res)
+    const user=await Student.findOne({"rollno":rollno})
+    console.log(user)
+    user.posts.remove(postID)
+
+    return {"message":"Post deleted","status":201}
 }
 
 async function getFacultyById(facultyID){
@@ -165,3 +175,4 @@ module.exports.login =login
 module.exports.addFaculty =addFaculty
 module.exports.getFaculty=getFaculty
 module.exports.getFacultyById=getFacultyById
+module.exports.deletePost=deletePost
