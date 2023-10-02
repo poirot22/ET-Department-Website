@@ -85,7 +85,7 @@ async function addComment(postID,commentBody){
 }
 
 async function getPostById(postID){
-    const post=await Post.findById(postID)
+    const post = await Post.findById(postID)
     console.log(post)
     if(post==null){
         return {"message":"Post doesn't exist","status":404}
@@ -154,23 +154,6 @@ async function getFacultyById(facultyID){
     }
 }
 
-
-// async function deletePost(postId){
-//     const post = await Post.findById(postId)
-//     console.log(post)
-//     if(post==null){
-//         return {"message":"Post doesn't exist","status":404}
-//     }
-//     // const rollno=post.postedBy
-//     await Post.deleteOne({"_id":postId})
-//     // Post.save()
-//     const user=await Student.findById(rollno)
-//     user.posts.pull(postId)
-//     user.save()
-//     return {"message":"Post deleted","status":201}
-
-// }
-
 module.exports.addStudent = addStudent
 module.exports.getStudentByRollNo = getStudentByRollNo
 module.exports.addPost = addPost
@@ -182,4 +165,3 @@ module.exports.login =login
 module.exports.addFaculty =addFaculty
 module.exports.getFaculty=getFaculty
 module.exports.getFacultyById=getFacultyById
-module.exports.deletePost=deletePost
