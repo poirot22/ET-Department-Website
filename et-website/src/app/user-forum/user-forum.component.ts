@@ -55,6 +55,7 @@ export class UserForumComponent implements OnInit {
       this.posts = this.temp.posts;
       this.data = this.posts;
       this.totalRecords = this.data.length;
+      localStorage.setItem("rollno", this.userData.rollno);
     } catch (error) {
       console.error(error);
     }

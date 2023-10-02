@@ -62,6 +62,7 @@ async function addPost(body){
     const newPost = new Post(body)
     studentExists.posts.push(newPost._id)
     await newPost.save()
+    await studentExists.save()
     return {"message":"Post created","status":201,"post added":newPost}
 
 }
@@ -76,7 +77,7 @@ async function addComment(postID,commentBody){
         return {"message":"Student doesn't exist","Status":400}
     }
     else{
-        post.comments.push(comment)
+        post.comments.push(commentBody)
         student.comments.push({"postID":post._id,"comment":commentBody.comment})
         await post.save()
         await student.save()

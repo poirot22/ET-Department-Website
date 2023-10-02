@@ -33,7 +33,9 @@ export class CommentComponent {
         
         this.http.get("http://localhost:9000/getCommentsOnPost/"+this.postId).subscribe(resp=>{
           this.temp2=resp
+          console.log(this.temp2)
           this.comments=this.temp2.comments
+          console.log(this.comments)
         })
     })
   }
@@ -42,10 +44,18 @@ export class CommentComponent {
   addComment(){
     this.postedComment=this.commentForm.value
     console.log(this.postedComment.comment)
+    if(this.postedComment.comment==null){
+      alert("Please enter a comment")
+      return
+    }
     this.commentBody={
       "comment":this.postedComment,
-      
+      "postedBy":localStorage.getItem("rollno")
     }
     console.log(this.commentBody)
+    const resp=this.http.put("http://localhost:9000/addComment/"+this.postId,this.commentBody) 
+    resp.subscribe((data)=>console.log(data))
+    console.log(this.commentBody)
+    window.location.reload()
   }
 }
