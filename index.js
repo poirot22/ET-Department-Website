@@ -146,33 +146,14 @@ app.post('/login',(req,res)=>{
 
 
 //PUT Methods
-app.put('/addComment/:postID', (req, res) => {
-    postID = req.params.postID;
-    comment = req.body;
+app.put('/addComment/:postID',(req,res)=>{
+    postID=req.params.postID
+    comment = req.body
 
-    queries.addComment(postID, comment).then(response => {
-        if (response.status) {
-            res.status(response.status).send(response);
-        } else {
-            res.status(500).send({ error: 'Internal Server Error' });
-        }
-    }).catch(error => {
-        console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
-    });
-});
-
-
-
-//DELETE Methods    
-app.delete('/deletePost/:postID',(req,res)=>{
-    postID=req.params.postID 
-
-    queries.deletePost(postID).then(response=>{
+    queries.addComment(postID,comment).then(response=>{
         res.status(response.status).send(response)
     })
 })
-
 app.listen(port,()=>{
     console.log('listening at port '+port)
 })
