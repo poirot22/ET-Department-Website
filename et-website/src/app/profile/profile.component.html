@@ -14,6 +14,7 @@
         <h2 class="text-2xl font-bold">My Posts</h2>
     </div>
     <div class="w-full max-w-full">
+        <div *ngIf="this.userPosts.length==0" class="text-2xl flex justify-center">No Posts</div>
         <div *ngFor="let post of userPosts" class="p-4 border-b">
             <div class="flex flex-row justify-between items-center">
                 <div class="flex">

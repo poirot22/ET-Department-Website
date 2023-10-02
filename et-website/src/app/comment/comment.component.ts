@@ -23,10 +23,9 @@ export class CommentComponent {
   temp:any=""
   temp2:any=""
   comments:any=[]
-  token=localStorage.getItem('studentToken')
+  userRoll=localStorage.getItem('rollno')
   ngOnInit(){
     this.postId = this.route.snapshot.paramMap.get('id');
-    console.log(this.token)
     this.http.get("http://localhost:9000/getPostById/"+this.postId).subscribe(resp=>{
         this.temp=resp
         this.post=this.temp.post

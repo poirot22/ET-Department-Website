@@ -94,7 +94,16 @@ export class UserForumComponent implements OnInit {
     }
   }
 
-  deletePost() {
+  deletePost(postId) {
     // Add your delete post logic here
+    console.log(postId);
+    this.http
+      .delete('http://localhost:9000/deletePost/' + postId)
+      .toPromise()
+      .then((res) => {
+        console.log(res);
+        
+      });
+      window.location.reload();
   }
 }
