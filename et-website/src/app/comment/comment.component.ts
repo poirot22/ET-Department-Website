@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UserForumComponent } from '../user-forum/user-forum.component';
+import { HelperService } from '../helper.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { UserForumComponent } from '../user-forum/user-forum.component';
 })
 export class CommentComponent {
 
-  constructor(private route:ActivatedRoute,private http:HttpClient,){}
+  constructor(private route:ActivatedRoute,private http:HttpClient,private helper:HelperService,private router:Router){}
 
   commentForm=new FormGroup({
     comment: new FormControl(),
@@ -40,6 +41,7 @@ export class CommentComponent {
   commentBody:any=""
   rollno:any=""
   addComment(){
+
     this.postedComment=this.commentForm.value
     console.log(this.postedComment.comment)
     this.rollno=localStorage.getItem('rollno')
