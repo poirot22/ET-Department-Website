@@ -14,6 +14,7 @@ import { CommentComponent } from './comment/comment.component';
 import { DevteamComponent } from './devteam/devteam.component';
 import { StudentsclubComponent } from './studentsclub/studentsclub.component';
 import { FacultyprofileComponent } from './facultyprofile/facultyprofile.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
@@ -69,7 +70,10 @@ const routes: Routes = [
     component:DevteamComponent,
     path:'developers'
   },
-  
+  {
+    component:ProfileComponent,
+    path:'profile/:rollno'
+  }
 
 ];
 

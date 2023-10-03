@@ -24,10 +24,9 @@ export class CommentComponent {
   temp:any=""
   temp2:any=""
   comments:any=[]
-  token=localStorage.getItem('studentToken')
+  userRoll=localStorage.getItem('rollno')
   ngOnInit(){
     this.postId = this.route.snapshot.paramMap.get('id');
-    console.log(this.token)
     this.http.get("http://localhost:9000/getPostById/"+this.postId).subscribe(resp=>{
         this.temp=resp
         this.post=this.temp.post
@@ -40,20 +39,20 @@ export class CommentComponent {
   }
   postedComment:any=""
   commentBody:any=""
-  async addComment(){
+  rollno:any=""
+  addComment(){
+
     this.postedComment=this.commentForm.value
     console.log(this.postedComment.comment)
+    this.rollno=localStorage.getItem('rollno')
     this.commentBody={
-      "comment":this.postedComment.comment,
-      "postedBy": await this.helper.getUser().then(resp=>{return resp.toString()}),
+      "comment":this.postedComment,
+      "postedBy":this.rollno
     }
-    console.log(this.commentBody)
 
-    this.http.put("http://localhost:9000/addComment/"+this.postId,this.commentBody).subscribe(resp=>{
+    const resp=this.http.put("http://localhost:9000/addComment/"+this.postId,this.commentBody).subscribe(resp=>{
       console.log(resp)
-      this.router.navigateByUrl('home', { skipLocationChange: true }).then(() => {
-        this.router.navigate(['/comment/'+this.postId]);
-      });
-    })
+    })  
+    window.location.reload()
   }
 }
