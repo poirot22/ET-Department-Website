@@ -49,7 +49,8 @@ export class UserForumComponent implements OnInit {
       this.temp = userDataResp;
       this.userData = this.temp["Student Data"];
       // this.datashare.data = this.userData;
-
+      //set rollno in local storage
+      localStorage.setItem('rollno', this.userData.rollno);
       const postsResp = await this.http.get("http://localhost:9000/getAllPosts").toPromise();
       this.temp = postsResp;
       this.posts = this.temp.posts;
@@ -93,7 +94,16 @@ export class UserForumComponent implements OnInit {
     }
   }
 
-  deletePost() {
+  deletePost(postId) {
     // Add your delete post logic here
+    console.log(postId);
+    this.http
+      .delete('http://localhost:9000/deletePost/' + postId)
+      .toPromise()
+      .then((res) => {
+        console.log(res);
+        
+      });
+      window.location.reload();
   }
 }

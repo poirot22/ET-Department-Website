@@ -841,12 +841,12 @@ footer .address {
   } */
 
 .navbar {
-  background-color: #0c134f;
+  background-color: rgb(8 47 73);
   justify-content: center;
 }
 
 #dd {
-  background-color: #0c134f;
+  background-color: rgb(8 47 73);
   border: none;
 }
 
@@ -860,7 +860,7 @@ footer .address {
 }
 
 #f-wrapper {
-  background-color: #0c134f;
+  background-color:rgb(8 47 73);
   text-align: center;
 }
 .clock {
@@ -870,6 +870,7 @@ footer .address {
   border-radius: 50%;
   position: relative;
   background-color: white;
+  transform:rotate(90deg);
 }
 .hour, .minute, .second {
   position: absolute;

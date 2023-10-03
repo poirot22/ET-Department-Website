@@ -1,156 +1,194 @@
 const schemas = require('./schemas.js')
 const mongoose = require('mongoose')
-const confidential= require('./confidential.js')
+const confidential = require('./confidential.js')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 mongoose.set("strictQuery", false);
 
-const Student = mongoose.model("Student",schemas.student)
-const Post = mongoose.model("Post",schemas.post)
-const Faculty = mongoose.model("Faculty",schemas.faculty)
+const Student = mongoose.model("Student", schemas.student)
+const Post = mongoose.model("Post", schemas.post)
+const Faculty = mongoose.model("Faculty", schemas.faculty)
 
-async function addStudent(body){
-    const studentExists = await Student.findOne({"rollno":body.rollno})
-    
-    
+async function addStudent(body) {
+    const studentExists = await Student.findOne({ "rollno": body.rollno })
+
+
     console.log(studentExists)
-    if(studentExists==null){
-        body.password = await bcrypt.hash(body.password,10)
+    if (studentExists == null) {
+        body.password = await bcrypt.hash(body.password, 10)
         const newStudent = new Student(body)
         await newStudent.save()
         return "Student Added"
     }
-    else{
+    else {
         return "Student already exists"
     }
 }
 
-async function addFaculty(body){
-    const facultyExists = await Faculty.findOne({"id":body.id})
-    
-    
+async function addFaculty(body) {
+    const facultyExists = await Faculty.findOne({ "id": body.id })
+
+
     console.log(facultyExists)
-    if(facultyExists==null){
+    if (facultyExists == null) {
         const newFaculty = new Faculty(body)
         await newFaculty.save()
         return "Faculty Added"
     }
-    else{
+    else {
         return "Faculty already exists"
     }
 }
 
 
-async function getStudentByRollNo(rollno){
-    const student = await Student.findOne({"rollno":rollno})
-    if(student==null){
-        return {"message":"Student doesn't exist"}
+async function getStudentByRollNo(rollno) {
+    const student = await Student.findOne({ "rollno": rollno })
+    if (student == null) {
+        return { "message": "Student doesn't exist" }
     }
-    else{
-        return {"message":"Student Found","Student Data":student}
+    else {
+        return { "message": "Student Found", "Student Data": student }
     }
 }
 
 
 
-async function addPost(body){
-    const studentExists = await Student.findOne({"rollno":body.postedBy})
-    if(studentExists==null){
-        return {"message":"Student doesn't exist","status":400}
+async function addPost(body) {
+    const studentExists = await Student.findOne({ "rollno": body.postedBy })
+    if (studentExists == null) {
+        return { "message": "Student doesn't exist", "status": 400 }
     }
     const newPost = new Post(body)
     studentExists.posts.push(newPost._id)
     await newPost.save()
-    return {"message":"Post created","status":201,"post added":newPost}
+    studentExists.save()
+    return { "message": "Post created", "status": 201, "post added": newPost }
 
 }
 
-async function addComment(postID,commentBody){
+async function addComment(postID, commentBody) {
     const post = await Post.findById(postID)
-    const student = await Student.findOne({"rollno":commentBody.postedBy})
-    if(post==null){
-        return {"message":"Post doesn't exist","Status":400}
+    const student = await Student.findOne({ "rollno": commentBody.postedBy })
+    if (post == null) {
+        return { "message": "Post doesn't exist", "Status": 400 }
     }
-    else if(student==null){
-        return {"message":"Student doesn't exist","Status":400}
+    else if (student == null) {
+        return { "message": "Student doesn't exist", "Status": 400 }
     }
-    else{
+    else {
         post.comments.push(comment)
-        student.comments.push({"postID":post._id,"comment":commentBody.comment})
+        student.comments.push({ "postID": post._id, "comment": commentBody.comment })
         await post.save()
         await student.save()
-        return {"message":"Comment added","status":201,"Post updated":post,"Student updated":student}
+        return { "message": "Comment added", "status": 201, "Post updated": post, "Student updated": student }
     }
 }
 
-async function getPostById(postID){
+async function getPostById(postID) {
     const post = await Post.findById(postID)
     console.log(post)
-    if(post==null){
-        return {"message":"Post doesn't exist","status":404}
+    if (post == null) {
+        return { "message": "Post doesn't exist", "status": 404 }
     }
-    else{
-        return {"message":"Post found","status":201,"post":post}
+    else {
+        return { "message": "Post found", "status": 201, "post": post }
     }
 }
 
-async function getCommentsOnPost(postID){
+async function getCommentsOnPost(postID) {
     const post = await Post.findById(postID)
 
-    if(post==null){
-        return {"message":"Post doesn't exist","status":404}
+    if (post == null) {
+        return { "message": "Post doesn't exist", "status": 404 }
     }
-    else{
-        return {"message":"Post found","status":201,"comments":post.comments}
-    }
-}
-
-async function login(loginForm){
-    const student = await Student.findOne({"rollno":loginForm.rollno.toUpperCase()})
-
-    if(student==null){
-        return {"message":"Student doesn't exist","status":404}
-    }
-    const matchPassword = await bcrypt.compare(loginForm.password,student.password)
-
-    if(matchPassword){
-        const token = await jwt.sign({rollno:student.rollno,password:student.password},confidential.SECRET_KEY)
-        return {"message":"User Logged In","token":token,"status":200}
-    }
-    else{
-        return {"message":"Wrong password","status":401}
+    else {
+        return { "message": "Post found", "status": 201, "comments": post.comments }
     }
 }
 
-async function getAllPosts(){
+async function login(loginForm) {
+    const student = await Student.findOne({ "rollno": loginForm.rollno.toUpperCase() })
+
+    if (student == null) {
+        return { "message": "Student doesn't exist", "status": 404 }
+    }
+    const matchPassword = await bcrypt.compare(loginForm.password, student.password)
+
+    if (matchPassword) {
+        const token = await jwt.sign({ rollno: student.rollno, password: student.password }, confidential.SECRET_KEY)
+        return { "message": "User Logged In", "token": token, "status": 200 }
+    }
+    else {
+        return { "message": "Wrong password", "status": 401 }
+    }
+}
+
+async function getAllPosts() {
     const posts = await Post.find()
 
-    return {"message":"Posts returned","status":201,"posts":posts}
+    return { "message": "Posts returned", "status": 201, "posts": posts }
 }
 
-async function getFaculty(){
-    const facultyDetails= await Faculty.find();
+async function getFaculty() {
+    const facultyDetails = await Faculty.find();
     console.log(facultyDetails)
-    return {"message":"Details returned","status":201,"details":facultyDetails}
+    return { "message": "Details returned", "status": 201, "details": facultyDetails }
 }
 
-async function deletePost(postID){
-    const post = await Post.findById(postID)
+async function deletePost(postID) {
+    try {
+        const post = await Post.findById(postID);
+        if (!post) {
+            return { "message": "Post doesn't exist", "status": 404 };
+        }
+        const rollno = post.postedBy;
+        const comments = post.comments
+        await Post.deleteOne({ "_id": postID });
+        const user = await Student.findOne({ "rollno": rollno });
+        for (let i = 0; i < comments.length; i++) {
+            const currUser = await Student.findOne({ "rollno": comments[i].postedBy })
+            for (let j = 0; j < currUser.comments.length; j++) {
+                if (currUser.comments[j].postID == postID) {
+                    currUser.comments.splice(j, 1)
+                    break
+                }
+            }
+            currUser.save()
+        }
 
-    if(post!=null){
-        
+        if (user) {
+            for (let i = 0; i < user.posts.length; i++) {
+                if (user.posts[i] == postID) {
+                    user.posts.splice(i, 1)
+                    break
+                }
+            }
+            for (let i = 0; i < user.comments.length; i++) {
+                if (user.comments[i].postID == postID) {
+                    user.comments.splice(i, 1)
+                    break
+                }
+            }
+        }
+        await user.save();
+
+        return { "message": "Post deleted", "status": 201 };
+    } catch (error) {
+        console.error(error);
+        return { "message": "An error occurred", "status": 500 };
     }
 }
 
-async function getFacultyById(facultyID){
-    const faculty=await Faculty.findById(facultyID)
 
-    if(faculty!=null){
-        return {"message":"Faculty found","Faculty Data":faculty}
+async function getFacultyById(facultyID) {
+    const faculty = await Faculty.findById(facultyID)
+
+    if (faculty != null) {
+        return { "message": "Faculty found", "Faculty Data": faculty }
     }
-    else{
-        return {"message":"Faculty not found","status":404}
+    else {
+        return { "message": "Faculty not found", "status": 404 }
     }
 }
 
@@ -159,9 +197,10 @@ module.exports.getStudentByRollNo = getStudentByRollNo
 module.exports.addPost = addPost
 module.exports.getPostById = getPostById
 module.exports.getCommentsOnPost = getCommentsOnPost
-module.exports.addComment =addComment
-module.exports.getAllPosts =getAllPosts
-module.exports.login =login
-module.exports.addFaculty =addFaculty
-module.exports.getFaculty=getFaculty
-module.exports.getFacultyById=getFacultyById
+module.exports.addComment = addComment
+module.exports.getAllPosts = getAllPosts
+module.exports.login = login
+module.exports.addFaculty = addFaculty
+module.exports.getFaculty = getFaculty
+module.exports.getFacultyById = getFacultyById
+module.exports.deletePost = deletePost
