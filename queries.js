@@ -153,10 +153,12 @@ async function deleteComment(commentID){
     const post=await Post.findById(comment.commentedOn)
 
     index=student.comments.indexOf(commentID)
-    student.comments.splice(index,1)
+    await student.comments.splice(index,1)
     index=post.comments.indexOf(commentID)
-    post.comments.splice(index,1)
+    await post.comments.splice(index,1)
 
+    await student.save()
+    await post.save()
     await Comment.deleteOne({"_id":commentID})
         
     return {"message":"Comment deleted","status":201}
@@ -165,7 +167,7 @@ async function deleteComment(commentID){
 
 async function deletePost(postID) {
     try {
-        console.log("Deleting post "+postID)
+        //console.log("Deleting post "+postID)
         const post = await Post.findById(postID);
         if (!post) {
             return { "message": "Post doesn't exist", "status": 404 };
@@ -175,31 +177,16 @@ async function deletePost(postID) {
         if (!user) {
             return { "message": "User doesn't exist", "status": 404 };
         }
-
-        function checkComment(comment){
-            return !comment.postID==postID
-        }
-
+        const index = user.posts.indexOf(postID);
+        user.posts.splice(index, 1);
+        await user.save()
+        
         for(let i=0;i<post.comments.length;i++){
-            const student=await Student.findOne({"rollno":post.comments[i].postedBy})
-            const res=student.comments.filter(checkComment)
-            student.comments=res.slice()
-            console.log(student.comments)
-            await student.save()
+            await deleteComment(post.comments[i])
         }
 
-        function checkPost(postID){
-            return !postID==postID
-        }
-
-        const res=await user.posts.filter(checkPost)
-        user.posts=res.slice()
-        console.log(user.posts)
-
-        await user.save();  
-        //await Post.deleteOne({ "_id": postID });
-        console.log(postID)
-        await Post.findByIdAndDelete(postID);
+       
+        await Post.deleteOne({"_id":postID});
 
         return { "message": "Post deleted", "status": 201 };
     } catch (error) {
