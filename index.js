@@ -104,6 +104,12 @@ app.get("/getAllPosts",(req,res)=>{
     })
 })
 
+app.get("/getCommentByID/:commentID",(req,res)=>{
+    commentID=req.params.commentID
+    queries.getCommentByID(commentID).then(response=>{
+        res.status(response.status).send(response)
+    })
+})
 
 //POST Methods
 app.post('/addStudent',(req,res)=>{
@@ -146,7 +152,7 @@ app.post('/login',(req,res)=>{
 
 
 //PUT Methods
-app.put('/addComment/:postID', (req, res) => {
+app.post('/addComment/:postID', (req, res) => {
     postID = req.params.postID;
     comment = req.body;
 
@@ -171,6 +177,15 @@ app.delete('/deletePost/:postID',(req,res)=>{
         res.status(response.status).send(response)
     })
 })
+
+app.delete('/deleteComment/:commentID',(req,res)=>{
+    commentID=req.params.commentID 
+
+    queries.deleteComment(commentID).then(response=>{
+        res.status(response.status).send(response)
+    })
+})
+
 
 app.listen(port,()=>{
     console.log('listening at port '+port)

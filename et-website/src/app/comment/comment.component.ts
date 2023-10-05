@@ -24,6 +24,7 @@ export class CommentComponent {
   temp:any=""
   temp2:any=""
   comments:any=[]
+  commentIDs:any=[]
   userRoll=localStorage.getItem('rollno')
   ngOnInit(){
     this.postId = this.route.snapshot.paramMap.get('id');
@@ -31,10 +32,18 @@ export class CommentComponent {
         this.temp=resp
         this.post=this.temp.post
         
-        this.http.get("http://localhost:9000/getCommentsOnPost/"+this.postId).subscribe(resp=>{
+        /*this.http.get("http://localhost:9000/getCommentsOnPost/"+this.postId).subscribe(resp=>{
           this.temp2=resp
           this.comments=this.temp2.comments
-        })
+        })*/
+        this.commentIDs=this.post.comments
+        for(let i=0;i<this.commentIDs.length;i++){
+          this.http.get("http://localhost:9000/getCommentById/"+this.commentIDs[i]).subscribe(resp=>{
+            //this.comments[i].postedBy=resp
+            this.temp2=resp
+            this.comments.push(this.temp2.comment)
+          })
+        }
     })
   }
   postedComment:any=""
@@ -46,13 +55,21 @@ export class CommentComponent {
     console.log(this.postedComment.comment)
     this.rollno=localStorage.getItem('rollno')
     this.commentBody={
-      "comment":this.postedComment,
+      "comment":this.postedComment.comment,
       "postedBy":this.rollno
     }
 
-    const resp=this.http.put("http://localhost:9000/addComment/"+this.postId,this.commentBody).subscribe(resp=>{
+    const resp=this.http.post("http://localhost:9000/addComment/"+this.postId,this.commentBody).subscribe(resp=>{
       console.log(resp)
     })  
+    window.location.reload()
+  }
+
+  deleteComment(commentID){
+
+    this.http.delete("http://localhost:9000/deleteComment/"+commentID).subscribe(resp=>{
+      console.log(resp)
+    })
     window.location.reload()
   }
 }
