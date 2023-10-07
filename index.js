@@ -28,8 +28,8 @@ app.use('/verify',(req,res,next)=>{
             console.log(token)
             token=token.split(" ")[1]
             let student = jwt.verify(token,confidential.SECRET_KEY)
-            console.log(student.rollno)
-            req.studentRollNo=student.rollno
+            console.log(student.id)
+            req.userID=student.id
         }
         else{
             res.sendStatus(401).json({message:"unauthorised user"})
@@ -41,8 +41,6 @@ app.use('/verify',(req,res,next)=>{
         res.sendStatus(201).json({message:"Unauthorized user"})
     }
 })
-
-
 
 
 
@@ -94,8 +92,8 @@ app.get("/getFacultyById/:facultyID",(req,res)=>{
 })
 
 
-app.get("/verifyStudent",(req,res)=>{
-    res.send({"Student Roll Number":req.studentRollNo})
+app.get("/verify",(req,res)=>{
+    res.send({"User ID":req.userID})
 })
 
 app.get("/getAllPosts",(req,res)=>{
@@ -142,21 +140,14 @@ app.post('/addPost',(req,res)=>{
     })
 })
 
-app.post('/loginStudent',(req,res)=>{
+app.post('/login',(req,res)=>{
     const loginForm=req.body
 
-    queries.loginStudent(loginForm).then(resp=>{
+    queries.login(loginForm).then(resp=>{
         res.status(resp.status).send(resp)
     })
 })
 
-app.post('/loginFaculty',(req,res)=>{
-    const loginForm=req.body
-
-    queries.loginFaculty(loginForm).then(resp=>{
-        res.status(resp.status).send(resp)
-    })
-})
 
 
 //PUT Methods

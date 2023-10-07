@@ -12,7 +12,7 @@ const Faculty = mongoose.model("Faculty", schemas.faculty)
 const Comment=mongoose.model("Comment",schemas.comment)
 
 async function addStudent(body) {
-    const studentExists = await Student.findOne({ "rollno": body.rollno })
+    const studentExists = await Student.findOne({ "id": body.rollno })
 
 
     console.log(studentExists)
@@ -45,7 +45,7 @@ async function addFaculty(body) {
 
 
 async function getStudentByRollNo(rollno) {
-    const student = await Student.findOne({ "rollno": rollno })
+    const student = await Student.findOne({ "id": rollno })
     if (student == null) {
         return { "message": "Student doesn't exist" }
     }
@@ -57,7 +57,7 @@ async function getStudentByRollNo(rollno) {
 
 
 async function addPost(body) {
-    const studentExists = await Student.findOne({ "rollno": body.postedBy })
+    const studentExists = await Student.findOne({ "id": body.postedBy })
     if (studentExists == null) {
         return { "message": "Student doesn't exist", "status": 400 }
     }
@@ -71,7 +71,7 @@ async function addPost(body) {
 
 async function addComment(postID, commentBody) {
     const post = await Post.findById(postID)
-    const student = await Student.findOne({ "rollno": commentBody.postedBy })
+    const student = await Student.findOne({ "id": commentBody.postedBy })
     if (post == null) {
         return { "message": "Post doesn't exist", "Status": 400 }
     }
@@ -114,8 +114,8 @@ async function getCommentsOnPost(postID) {
     }
 }
 
-async function loginStudent(loginForm) {
-    const student = await Student.findOne({ "rollno": loginForm.rollno.toUpperCase() })
+async function login(loginForm) {
+    const student = await Student.findOne({ "id": loginForm.id.toUpperCase() })
 
     if (student == null) {
         return { "message": "Student doesn't exist", "status": 404 }
@@ -123,7 +123,7 @@ async function loginStudent(loginForm) {
     const matchPassword = await bcrypt.compare(loginForm.password, student.password)
 
     if (matchPassword) {
-        const token = await jwt.sign({ rollno: student.rollno, password: student.password,roles:student.roles }, confidential.SECRET_KEY)
+        const token = await jwt.sign({ id: student.id, password: student.password,roles:student.roles }, confidential.SECRET_KEY)
         return { "message": "User Logged In", "token": token, "status": 200 }
     }
     else {
@@ -131,22 +131,7 @@ async function loginStudent(loginForm) {
     }
 }
 
-async function loginFaculty(loginForm) {
-    const faculty = await Faculty.findOne({ "id": loginForm.id.toUpperCase() })
 
-    if (faculty == null) {
-        return { "message": "faculty doesn't exist", "status": 404 }
-    }
-    const matchPassword = await bcrypt.compare(loginForm.password, faculty.password)
-
-    if (matchPassword) {
-        const token = await jwt.sign({ id: faculty.id, password: faculty.password, roles:faculty.roles }, confidential.SECRET_KEY)
-        return { "message": "User Logged In", "token": token, "status": 200 }
-    }
-    else {
-        return { "message": "Wrong password", "status": 401 }
-    }
-}
 
 async function getAllPosts() {
     const posts = await Post.find()
@@ -167,7 +152,7 @@ async function deleteComment(commentID){
         return {"message":"Comment doesn't exist","status":404}
     }
 
-    const student=await Student.findOne({"rollno":comment.commentedBy})
+    const student=await Student.findOne({"id":comment.commentedBy})
     const post=await Post.findById(comment.commentedOn)
 
     index=student.comments.indexOf(commentID)
@@ -191,7 +176,7 @@ async function deletePost(postID) {
             return { "message": "Post doesn't exist", "status": 404 };
         }
         const rollno = post.postedBy;        
-        const user = await Student.findOne({ "rollno": rollno });
+        const user = await Student.findOne({ "id": rollno });
         if (!user) {
             return { "message": "User doesn't exist", "status": 404 };
         }
@@ -242,11 +227,10 @@ module.exports.getPostById = getPostById
 module.exports.getCommentsOnPost = getCommentsOnPost
 module.exports.addComment = addComment
 module.exports.getAllPosts = getAllPosts
-module.exports.loginStudent = loginStudent
+module.exports.login = login
 module.exports.addFaculty = addFaculty
 module.exports.getFaculty = getFaculty
 module.exports.getFacultyById = getFacultyById
 module.exports.deletePost = deletePost
 module.exports.getCommentByID=getCommentByID
 module.exports.deleteComment=deleteComment
-module.exports.loginFaculty=loginFaculty

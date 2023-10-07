@@ -9,7 +9,7 @@ export class HelperService {
   constructor(private http: HttpClient) { }
 
   loggedIn(){
-    if(localStorage.getItem('studentToken')!=undefined){
+    if(localStorage.getItem('userToken')!=undefined){
       return true;
     }
     return false;
@@ -18,7 +18,7 @@ export class HelperService {
   async getUser(){
     const headers_object = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.getItem('studentToken'),
+      'Authorization': 'Bearer ' + localStorage.getItem('userToken'),
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Credentials': 'true',
       'Access-Control-Allow-Headers': 'Content-Type',
@@ -31,6 +31,6 @@ export class HelperService {
     const resp = await this.http.get("http://localhost:9000/verify", httpOptions).toPromise();
     this.temp = resp;
     console.log(this.temp)
-    return this.temp["Student Roll Number"]
+    return this.temp["User ID"]
   }
 }

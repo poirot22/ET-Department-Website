@@ -18,7 +18,7 @@ export class ForumComponent {
 
 
   loginForm = new FormGroup({
-    rollno: new FormControl(),
+    id: new FormControl(),
     password: new FormControl()
   })
 
@@ -44,12 +44,12 @@ export class ForumComponent {
     } else{ return false}
   }
 
-  loginStudent(){
-    this.http.post("http://localhost:9000/loginStudent",this.loginForm.value).subscribe(resp=>{
+  login(){
+    this.http.post("http://localhost:9000/login",this.loginForm.value).subscribe(resp=>{
       this.temp=resp
       console.log(this.temp)
       if(this.temp.status==200){
-        localStorage.setItem("studentToken",this.temp.token)
+        localStorage.setItem("userToken",this.temp.token)
         this.router.navigate(['/userforum'])
       }
     })
@@ -66,17 +66,6 @@ export class ForumComponent {
     localStorage.removeItem("studentToken")
   }
 
-  loginFaculty(){
-    this.http.post("http://localhost:9000/loginFaculty",this.loginForm.value).subscribe(resp=>{
-      this.temp=resp
-      console.log(this.temp)
-      if(this.temp.status==200){
-        localStorage.setItem("facultyToken",this.temp.token)
-        this.router.navigate(['/userforum'])
-      }
-    })
-  }
-  
 
 }
 
