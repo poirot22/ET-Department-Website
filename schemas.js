@@ -86,7 +86,6 @@ const faculty = new mongoose.Schema({
     },
     education:{
         type:String,
-        required:true
     },
     picture:{
         type:String,
@@ -118,6 +117,10 @@ const faculty = new mongoose.Schema({
         type:Array,
         default:["faculty"]
     },
+    branch:{
+        type:String,
+        required:true
+    }
 })
 
 const comment= new mongoose.Schema({
