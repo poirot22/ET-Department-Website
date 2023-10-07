@@ -142,10 +142,10 @@ app.post('/addPost',(req,res)=>{
     })
 })
 
-app.post('/login',(req,res)=>{
+app.post('/loginStudent',(req,res)=>{
     const loginForm=req.body
 
-    queries.login(loginForm).then(resp=>{
+    queries.loginStudent(loginForm).then(resp=>{
         res.status(resp.status).send(resp)
     })
 })
@@ -168,6 +168,14 @@ app.post('/addComment/:postID', (req, res) => {
     });
 });
 
+app.put("/addProject/:studentID",(req,res)=>{
+    studentID=req.params.studentID
+    projectInfo=req.body 
+
+    queries.addProject(studentID,projectInfo).then(response=>{
+        res.status(response.status).send(response)
+    })
+})
 
 //DELETE Methods
 app.delete('/deletePost/:postID',(req,res)=>{

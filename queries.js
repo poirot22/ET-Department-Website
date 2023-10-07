@@ -113,7 +113,7 @@ async function getCommentsOnPost(postID) {
     }
 }
 
-async function login(loginForm) {
+async function loginStudent(loginForm) {
     const student = await Student.findOne({ "rollno": loginForm.rollno.toUpperCase() })
 
     if (student == null) {
@@ -217,6 +217,17 @@ async function getCommentByID(commentID){
     }
 }
 
+async function addProject(studentID,projectInfo){
+    const student = await Student.findOne({ "rollno": studentID })
+    if(student == null){
+        return {"message":"Student doesn't exist","status":404}
+    }
+    else{
+        student.projects.push(projectInfo)
+        await student.save()
+        return {"message":"Project added","status":201,"student":student}
+    }
+}
 module.exports.addStudent = addStudent
 module.exports.getStudentByRollNo = getStudentByRollNo
 module.exports.addPost = addPost
@@ -224,10 +235,11 @@ module.exports.getPostById = getPostById
 module.exports.getCommentsOnPost = getCommentsOnPost
 module.exports.addComment = addComment
 module.exports.getAllPosts = getAllPosts
-module.exports.login = login
+module.exports.loginStudent = loginStudent
 module.exports.addFaculty = addFaculty
 module.exports.getFaculty = getFaculty
 module.exports.getFacultyById = getFacultyById
 module.exports.deletePost = deletePost
 module.exports.getCommentByID=getCommentByID
 module.exports.deleteComment=deleteComment
+module.exports.addProject=addProject

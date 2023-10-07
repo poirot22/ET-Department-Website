@@ -8,7 +8,7 @@
 
 <div class="flex items-center p-4 space-x-4">
     <div *ngFor="let faculty of this.facultyList" class="bg-white w-60 m-4 rounded-md overflow-hidden shadow-md">
-        <img src="{{faculty.picture}}" alt="Faculty Picture" class="w-60 h-auto max-h-56 object-cover rounded-t-md">
+        <img src="{{faculty.picture}}" (error)="defaultPic($event)" class="w-60 h-auto max-h-56 object-cover rounded-t-md">
         <div class="p-4">
             <div class="text-xl font-semibold text-gray-800">{{faculty.firstName}}</div>
             <div class="text-sm text-gray-600">{{faculty.designation}}</div>

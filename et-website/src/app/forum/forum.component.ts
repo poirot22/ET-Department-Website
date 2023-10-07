@@ -45,7 +45,7 @@ export class ForumComponent {
   }
 
   loginStudent(){
-    this.http.post("http://localhost:9000/login",this.loginForm.value).subscribe(resp=>{
+    this.http.post("http://localhost:9000/loginStudent",this.loginForm.value).subscribe(resp=>{
       this.temp=resp
       console.log(this.temp)
       if(this.temp.status==200){
