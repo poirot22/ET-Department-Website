@@ -146,15 +146,17 @@ async function deletePost(postID) {
         const comments = post.comments
         await Post.deleteOne({ "_id": postID });
         const user = await Student.findOne({ "rollno": rollno });
+        
         for (let i = 0; i < comments.length; i++) {
             const currUser = await Student.findOne({ "rollno": comments[i].postedBy })
             for (let j = 0; j < currUser.comments.length; j++) {
                 if (currUser.comments[j].postID == postID) {
                     currUser.comments.splice(j, 1)
+                    
                     break
                 }
             }
-            currUser.save()
+            await currUser.save()
         }
 
         if (user) {
