@@ -94,7 +94,7 @@ app.get("/getFacultyById/:facultyID",(req,res)=>{
 })
 
 
-app.get("/verify",(req,res)=>{
+app.get("/verifyStudent",(req,res)=>{
     res.send({"Student Roll Number":req.studentRollNo})
 })
 
@@ -146,6 +146,14 @@ app.post('/loginStudent',(req,res)=>{
     const loginForm=req.body
 
     queries.loginStudent(loginForm).then(resp=>{
+        res.status(resp.status).send(resp)
+    })
+})
+
+app.post('/loginFaculty',(req,res)=>{
+    const loginForm=req.body
+
+    queries.loginFaculty(loginForm).then(resp=>{
         res.status(resp.status).send(resp)
     })
 })

@@ -52,29 +52,6 @@ export class ForumComponent {
         localStorage.setItem("studentToken",this.temp.token)
         this.router.navigate(['/userforum'])
       }
-      /*var headers_object = new HttpHeaders({
-        'Content-Type': 'application/json',
-         'Authorization': "Bearer "+localStorage.getItem('studentToken'),
-         'Access-Control-Allow-Origin': '*',
-         'Access-Control-Allow-Credentials': 'true',
-         'Access-Control-Allow-Headers': 'Content-Type',
-         'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
-      });
-      const httpOptions = {
-        headers: headers_object
-      };
-
-      this.http.get("http://localhost:9000/verify",httpOptions).subscribe(resp=>{
-          this.temp=resp 
-          console.log(this.temp)
-          this.http.get("http://localhost:9000/getStudentByRollNo/"+this.temp["Student Roll Number"]).subscribe(resp=>{
-              this.temp=resp
-              this.userData=this.temp["Student Data"]
-              console.log(this.userData)
-              this.router.navigate(["/userforum"]);
-          })
-      })*/
-
     })
   }
 
@@ -89,6 +66,16 @@ export class ForumComponent {
     localStorage.removeItem("studentToken")
   }
 
+  loginFaculty(){
+    this.http.post("http://localhost:9000/loginFaculty",this.loginForm.value).subscribe(resp=>{
+      this.temp=resp
+      console.log(this.temp)
+      if(this.temp.status==200){
+        localStorage.setItem("facultyToken",this.temp.token)
+        this.router.navigate(['/userforum'])
+      }
+    })
+  }
   
 
 }

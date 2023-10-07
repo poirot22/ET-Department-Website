@@ -28,7 +28,8 @@ export class UserForumComponent implements OnInit {
   }
 
   async getData() {
-    try {
+    
+    try { 
       const headers_object = new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + localStorage.getItem('studentToken'),
@@ -60,6 +61,8 @@ export class UserForumComponent implements OnInit {
       console.error(error);
     }
   }
+  
+  
 
   isDropdownOpen = false;
 

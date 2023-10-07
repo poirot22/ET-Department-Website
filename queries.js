@@ -123,7 +123,24 @@ async function loginStudent(loginForm) {
     const matchPassword = await bcrypt.compare(loginForm.password, student.password)
 
     if (matchPassword) {
-        const token = await jwt.sign({ rollno: student.rollno, password: student.password }, confidential.SECRET_KEY)
+        const token = await jwt.sign({ rollno: student.rollno, password: student.password,roles:student.roles }, confidential.SECRET_KEY)
+        return { "message": "User Logged In", "token": token, "status": 200 }
+    }
+    else {
+        return { "message": "Wrong password", "status": 401 }
+    }
+}
+
+async function loginFaculty(loginForm) {
+    const faculty = await Faculty.findOne({ "id": loginForm.id.toUpperCase() })
+
+    if (faculty == null) {
+        return { "message": "faculty doesn't exist", "status": 404 }
+    }
+    const matchPassword = await bcrypt.compare(loginForm.password, faculty.password)
+
+    if (matchPassword) {
+        const token = await jwt.sign({ id: faculty.id, password: faculty.password, roles:faculty.roles }, confidential.SECRET_KEY)
         return { "message": "User Logged In", "token": token, "status": 200 }
     }
     else {
@@ -232,3 +249,4 @@ module.exports.getFacultyById = getFacultyById
 module.exports.deletePost = deletePost
 module.exports.getCommentByID=getCommentByID
 module.exports.deleteComment=deleteComment
+module.exports.loginFaculty=loginFaculty
