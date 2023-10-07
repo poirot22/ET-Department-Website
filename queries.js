@@ -9,6 +9,7 @@ mongoose.set("strictQuery", false);
 const Student = mongoose.model("Student", schemas.student)
 const Post = mongoose.model("Post", schemas.post)
 const Faculty = mongoose.model("Faculty", schemas.faculty)
+const Comment=mongoose.model("Comment",schemas.comment)
 
 async function addStudent(body) {
     const studentExists = await Student.findOne({ "rollno": body.rollno })
@@ -77,11 +78,16 @@ async function addComment(postID, commentBody) {
         return { "message": "Student doesn't exist", "Status": 400 }
     }
     else {
-        post.comments.push(comment)
-        student.comments.push({ "postID": post._id, "comment": commentBody.comment })
+        //console.log("c:" +commentBody)
+        body={"content":commentBody.comment,"commentedBy":commentBody.postedBy,"commentedOn":postID}
+        const comment=new Comment(body)
+        post.comments.push(comment._id)
+        student.comments.push(comment._id)
+        //console.log(body)
         await post.save()
         await student.save()
-        return { "message": "Comment added", "status": 201, "Post updated": post, "Student updated": student }
+        await comment.save()
+        return { "message": "Comment added", "status": 201, "Comment ID":comment._id, "Post updated": post, "Student updated": student }
     }
 }
 
@@ -136,44 +142,51 @@ async function getFaculty() {
     return { "message": "Details returned", "status": 201, "details": facultyDetails }
 }
 
+async function deleteComment(commentID){
+    
+    const comment = await Comment.findById(commentID)
+    if(comment==null){
+        return {"message":"Comment doesn't exist","status":404}
+    }
+
+    const student=await Student.findOne({"rollno":comment.commentedBy})
+    const post=await Post.findById(comment.commentedOn)
+
+    index=student.comments.indexOf(commentID)
+    await student.comments.splice(index,1)
+    index=post.comments.indexOf(commentID)
+    await post.comments.splice(index,1)
+
+    await student.save()
+    await post.save()
+    await Comment.deleteOne({"_id":commentID})
+        
+    return {"message":"Comment deleted","status":201}
+    
+}
+
 async function deletePost(postID) {
     try {
+        //console.log("Deleting post "+postID)
         const post = await Post.findById(postID);
         if (!post) {
             return { "message": "Post doesn't exist", "status": 404 };
         }
-        const rollno = post.postedBy;
-        const comments = post.comments
-        await Post.deleteOne({ "_id": postID });
+        const rollno = post.postedBy;        
         const user = await Student.findOne({ "rollno": rollno });
+        if (!user) {
+            return { "message": "User doesn't exist", "status": 404 };
+        }
+        const index = user.posts.indexOf(postID);
+        user.posts.splice(index, 1);
+        await user.save()
         
-        for (let i = 0; i < comments.length; i++) {
-            const currUser = await Student.findOne({ "rollno": comments[i].postedBy })
-            for (let j = 0; j < currUser.comments.length; j++) {
-                if (currUser.comments[j].postID == postID) {
-                    currUser.comments.splice(j, 1)
-                    
-                    break
-                }
-            }
-            await currUser.save()
+        for(let i=0;i<post.comments.length;i++){
+            await deleteComment(post.comments[i])
         }
 
-        if (user) {
-            for (let i = 0; i < user.posts.length; i++) {
-                if (user.posts[i] == postID) {
-                    user.posts.splice(i, 1)
-                    break
-                }
-            }
-            for (let i = 0; i < user.comments.length; i++) {
-                if (user.comments[i].postID == postID) {
-                    user.comments.splice(i, 1)
-                    break
-                }
-            }
-        }
-        await user.save();
+       
+        await Post.deleteOne({"_id":postID});
 
         return { "message": "Post deleted", "status": 201 };
     } catch (error) {
@@ -194,6 +207,16 @@ async function getFacultyById(facultyID) {
     }
 }
 
+async function getCommentByID(commentID){
+    const commentExists = await Comment.findById(commentID)
+    if(commentExists==null){
+        return {"message":"Comment doesn't exist","status":404}
+    }
+    else{
+        return {"message":"Comment found","status":201,"comment":commentExists}
+    }
+}
+
 module.exports.addStudent = addStudent
 module.exports.getStudentByRollNo = getStudentByRollNo
 module.exports.addPost = addPost
@@ -206,3 +229,5 @@ module.exports.addFaculty = addFaculty
 module.exports.getFaculty = getFaculty
 module.exports.getFacultyById = getFacultyById
 module.exports.deletePost = deletePost
+module.exports.getCommentByID=getCommentByID
+module.exports.deleteComment=deleteComment

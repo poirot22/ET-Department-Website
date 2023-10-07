@@ -96,7 +96,23 @@ const faculty = new mongoose.Schema({
     }
 })
 
+const comment= new mongoose.Schema({
+    content:{
+        type:String,
+        required:true
+    },
+    commentedBy:{
+        type:String,
+        required:true
+    },
+    commentedOn:{
+        type:String,
+        required:true
+    }
+})
+
 
 module.exports = mongoose.model('Student', student);
 module.exports = mongoose.model('Post', post);
 module.exports = mongoose.model('Faculty', faculty);
+module.exports = mongoose.model('Comment', comment);
