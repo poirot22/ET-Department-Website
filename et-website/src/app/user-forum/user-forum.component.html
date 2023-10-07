@@ -46,7 +46,7 @@
                             <a class="text-sm text-white bg-sky-900 p-1 rounded-md" id="comment-btn"
                                 routerLink="/comment/{{ post._id }}">Comment</a>
                         </div>
-                        <div class="flex justify-end p-2" *ngIf="post.postedBy==this.userData.id">
+                        <div class="flex justify-end p-2" *ngIf="post.postedBy==this.userData.id || this.userData.roles.includes('faculty')">
                             <a class="text-sm p-1  text-red-900 cursor-pointer hover:bg-red-900 hover:text-white rounded-lg" id="comment-btn" (click)="deletePost(post._id)">Delete</a>
                         </div>
 

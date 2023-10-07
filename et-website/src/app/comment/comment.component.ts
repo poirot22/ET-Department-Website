@@ -26,6 +26,7 @@ export class CommentComponent {
   comments:any=[]
   commentIDs:any=[]
   userRoll=localStorage.getItem('id')
+  ls=localStorage
   async ngOnInit(){
   
     this.postId = this.route.snapshot.paramMap.get('id');

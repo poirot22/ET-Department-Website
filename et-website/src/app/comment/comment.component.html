@@ -18,7 +18,7 @@
                     <div>{{ comment.content }}</div> <!-- Move comment content to the left -->
                 </div>
                 <div class="flex flex-col m-3">
-                    <div *ngIf="comment.commentedBy==this.userRoll"><button class="m-1 text-red-900 p-1 hover:bg-red-900  hover:text-white hover:rounded-md" (click)="deleteComment(comment._id)">Delete</button></div>
+                    <div *ngIf="comment.commentedBy==this.userRoll || this.ls.getItem('roles').includes('faculty')"><button class="m-1 text-red-900 p-1 hover:bg-red-900  hover:text-white hover:rounded-md" (click)="deleteComment(comment._id)">Delete</button></div>
                     <div><button class="m-1 p-1 text-sky-900 hover:bg-sky-900 hover:text-white hover:rounded-md" (click)="startReply(comment._id)">Reply</button></div>
                 </div>
             </div>

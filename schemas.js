@@ -104,10 +104,6 @@ const faculty = new mongoose.Schema({
         type:Array,
         default:[]
     },
-    password:{
-        type:String,
-        required:true
-    },
     posts:{
         type:Array,
         default:[]

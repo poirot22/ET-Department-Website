@@ -54,6 +54,7 @@ export class UserForumComponent implements OnInit {
         // this.datashare.data = this.userData;
         //set rollno in local storage
         localStorage.setItem('id', this.userData.id);
+        localStorage.setItem('roles', this.userData.roles);
         const postsResp = await this.http.get("http://localhost:9000/getAllPosts").toPromise();
         this.temp = postsResp;
         this.posts = this.temp.posts;
