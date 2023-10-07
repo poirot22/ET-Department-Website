@@ -32,7 +32,11 @@ const student = new mongoose.Schema({
     comments:{
         type:Array,
         default:[]
-    }
+    },
+    projectS:{
+        type:Array,
+        default:[]
+    },
 })
 
 const post = new mongoose.Schema({
@@ -56,6 +60,10 @@ const post = new mongoose.Schema({
         type:Array,
         default:[]
     },
+    roles:{
+        type:Array,
+        default:["student"]
+    }
 
 })
 
@@ -93,7 +101,23 @@ const faculty = new mongoose.Schema({
     publications:{
         type:Array,
         default:[]
-    }
+    },
+    password:{
+        type:String,
+        required:true
+    },
+    posts:{
+        type:Array,
+        default:[]
+    },
+    comments:{
+        type:Array,
+        default:[]
+    },
+    roles:{
+        type:Array,
+        default:["faculty"]
+    },
 })
 
 const comment= new mongoose.Schema({

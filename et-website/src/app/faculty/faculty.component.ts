@@ -20,4 +20,8 @@ export class FacultyComponent {
       console.log(resp)
     });
   }
+
+  defaultPic(event){
+    event.target.src = "assets/img/default-profile-photo.jpg"
+  }
 }

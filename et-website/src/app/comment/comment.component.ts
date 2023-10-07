@@ -27,30 +27,9 @@ export class CommentComponent {
   commentIDs:any=[]
   userRoll=localStorage.getItem('rollno')
   async ngOnInit(){
-    /*function sleep (time) {
-      return new Promise((resolve) => setTimeout(resolve, time));
-    }
-    
-    await sleep(500).then(() => {
-      console.log("slept")
-    });*/
-
-
+  
     this.postId = this.route.snapshot.paramMap.get('id');
-    /*this.http.get("http://localhost:9000/getPostById/"+this.postId).subscribe(resp=>{
-        this.temp=resp
-        this.post=this.temp.post
-      
-        this.commentIDs=this.post.comments.slice()
-        for(let i=0;i<this.commentIDs.length;i++){
-       
-
-          const resp= await this.http.get("http://localhost:9000/getCommentById/"+this.commentIDs[i]).toPromise()
-          //const postsResp = await this.http.get("http://localhost:9000/getAllPosts").toPromise();
-          this.temp2=resp
-          this.comments.push(this.temp2.comment)
-        }
-    })*/
+   
     const resp = await this.http.get("http://localhost:9000/getPostById/"+this.postId).toPromise();
     this.temp = resp;
     this.post = this.temp.post;
@@ -86,5 +65,17 @@ export class CommentComponent {
       console.log(resp)
     })
     window.location.reload()
+  }
+
+  async startReply(commentID){
+    const r:any=await this.http.get("http://localhost:9000/getCommentById/"+commentID).toPromise()
+    let t:any=r.comment
+    const rollno=t.commentedBy
+    console.log(t)
+    let input:any=document.getElementById("inputbox")
+    //input.style.color="red"
+    input.value="@"+rollno+"-"
+    
+   
   }
 }

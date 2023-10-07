@@ -106,4 +106,6 @@ export class UserForumComponent implements OnInit {
       });
       window.location.reload();
   }
+
+ 
 }
