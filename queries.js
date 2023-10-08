@@ -245,6 +245,7 @@ async function deleteProject(index,id){
 }
 
 
+
 module.exports.addStudent = addStudent
 module.exports.getStudentByRollNo = getStudentByRollNo
 module.exports.addPost = addPost
@@ -261,3 +262,4 @@ module.exports.getCommentByID=getCommentByID
 module.exports.deleteComment=deleteComment
 module.exports.addProject = addProject
 module.exports.deleteProject = deleteProject
+
