@@ -220,6 +220,30 @@ async function getCommentByID(commentID){
     }
 }
 
+async function addProject(id, project) {
+    const studentExists = await Student.findOne({ "id": id })
+    if (studentExists == null) {
+        return { "message": "Student doesn't exist", "status": 400 }
+    }
+    console.log(studentExists)
+    console.log(studentExists.projects)
+    studentExists.projects.push(project)
+    await studentExists.save()
+    return { "message": "Project added", "status": 201, "Project added": project }
+}
+
+
+async function deleteProject(index,id){
+    const studentExists = await Student.findOne({ "id": id })
+    if (studentExists == null) {
+        return { "message": "Student doesn't exist", "status": 400 }
+    }
+    console.log(studentExists)
+    studentExists.projects.splice(index,1)
+    await studentExists.save()
+    return { "message": "Project deleted", "status": 201}
+}
+
 
 module.exports.addStudent = addStudent
 module.exports.getStudentByRollNo = getStudentByRollNo
@@ -235,3 +259,5 @@ module.exports.getFacultyById = getFacultyById
 module.exports.deletePost = deletePost
 module.exports.getCommentByID=getCommentByID
 module.exports.deleteComment=deleteComment
+module.exports.addProject = addProject
+module.exports.deleteProject = deleteProject

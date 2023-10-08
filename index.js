@@ -167,14 +167,19 @@ app.post('/addComment/:postID', (req, res) => {
     });
 });
 
-app.put("/addProject/:studentID",(req,res)=>{
-    studentID=req.params.studentID
-    projectInfo=req.body 
+app.put("/addProject/:studentID", async (req, res) => {
+    const studentID = req.params.studentID;
+    const projectInfo = req.body;
 
-    queries.addProject(studentID,projectInfo).then(response=>{
-        res.status(response.status).send(response)
-    })
-})
+    queries.addProject(studentID, projectInfo).then(response => {
+        res.status(response.status).send(response);
+    }).catch(error => {
+        console.error(error);
+        res.status(500).send({ error: 'Internal Server Error' });
+    });
+
+});
+
 
 //DELETE Methods
 app.delete('/deletePost/:postID',(req,res)=>{
@@ -190,6 +195,14 @@ app.delete('/deleteComment/:commentID',(req,res)=>{
 
     queries.deleteComment(commentID).then(response=>{
         res.status(response.status).send(response)
+    })
+})
+
+app.delete('/deleteProject/:rollno/:index',(req,res)=>{
+    rollno=req.params.rollno 
+    index=req.params.index
+    queries.deleteProject(index,rollno).then(response=>{
+        res.send(response)  
     })
 })
 
