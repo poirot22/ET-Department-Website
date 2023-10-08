@@ -67,9 +67,7 @@ export class ForumComponent {
   }
 
 
+
 }
 
-
-  
-
-
+}

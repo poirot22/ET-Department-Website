@@ -22,6 +22,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { StudentsclubComponent } from './studentsclub/studentsclub.component';
 import { FacultyprofileComponent } from './facultyprofile/facultyprofile.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ProfileComponent } from './profile/profile.component';
     CommentComponent,
     DevteamComponent,
     ProfileComponent,
+    ContactUsComponent,
   ],
   imports: [
     BrowserModule,

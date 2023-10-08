@@ -10,10 +10,10 @@
     <div *ngFor="let faculty of this.facultyList" class="bg-white w-60 m-4 rounded-md overflow-hidden shadow-md">
         <img src="{{faculty.picture}}" (error)="defaultPic($event)" class="w-60 h-auto max-h-56 object-cover rounded-t-md">
         <div class="p-4">
-            <div class="text-xl font-semibold text-gray-800">{{faculty.firstName}}</div>
+            <div class="text-xl font-semibold text-gray-800">{{faculty.firstName}} {{faculty.lastName}}</div>
             <div class="text-sm text-gray-600">{{faculty.designation}}</div>
             <div class="text-blue-500 mt-2">
-                <a href="mailto:{{faculty.email}}"></a>
+                <a href="">{{faculty.email}}</a>
             </div>
         </div>
     </div>
