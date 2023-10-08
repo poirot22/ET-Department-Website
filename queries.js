@@ -114,7 +114,7 @@ async function getCommentsOnPost(postID) {
 }
 
 async function loginStudent(loginForm) {
-    const student = await Student.findOne({ "rollno": loginForm.rollno.toUpperCase() })
+    const student = await Student.findOne({ "id": loginForm.rollno.toUpperCase() })
 
     if (student == null) {
         return { "message": "Student doesn't exist", "status": 404 }
