@@ -25,7 +25,8 @@ export class CommentComponent {
   temp2:any=""
   comments:any=[]
   commentIDs:any=[]
-  userRoll=localStorage.getItem('rollno')
+  userRoll=localStorage.getItem('id')
+  ls=localStorage
   async ngOnInit(){
   
     this.postId = this.route.snapshot.paramMap.get('id');
@@ -47,7 +48,7 @@ export class CommentComponent {
 
     this.postedComment=this.commentForm.value
     console.log(this.postedComment.comment)
-    this.rollno=localStorage.getItem('rollno')
+    this.rollno=localStorage.getItem('id')
     this.commentBody={
       "comment":this.postedComment.comment,
       "postedBy":this.rollno

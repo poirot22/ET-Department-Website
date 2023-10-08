@@ -28,38 +28,46 @@ export class UserForumComponent implements OnInit {
   }
 
   async getData() {
-    try {
-      const headers_object = new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + localStorage.getItem('studentToken'),
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Credentials': 'true',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
-      });
+    
+      try {
+    
+        const headers_object = new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('userToken'),
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': 'true',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+        });
 
-      const httpOptions = {
-        headers: headers_object
-      };
+        const httpOptions = {
+          headers: headers_object
+        };
 
-      const resp = await this.http.get("http://localhost:9000/verify", httpOptions).toPromise();
-      this.temp = resp;
-      this.posts = [];
-      const userDataResp = await this.http.get("http://localhost:9000/getStudentByRollNo/" + this.temp["Student Roll Number"]).toPromise();
-      this.temp = userDataResp;
-      this.userData = this.temp["Student Data"];
-      // this.datashare.data = this.userData;
-      //set rollno in local storage
-      localStorage.setItem('rollno', this.userData.rollno);
-      const postsResp = await this.http.get("http://localhost:9000/getAllPosts").toPromise();
-      this.temp = postsResp;
-      this.posts = this.temp.posts;
-      this.data = this.posts;
-      this.totalRecords = this.data.length;
-    } catch (error) {
-      console.error(error);
-    }
+        const resp = await this.http.get("http://localhost:9000/verify", httpOptions).toPromise();
+        this.temp = resp;
+        console.log("t"+this.temp)
+        this.posts = [];
+        const userDataResp = await this.http.get("http://localhost:9000/getStudentByRollNo/" + this.temp["User ID"]).toPromise();
+        this.temp = userDataResp;
+        this.userData = this.temp["Student Data"];
+        // this.datashare.data = this.userData;
+        //set rollno in local storage
+        localStorage.setItem('id', this.userData.id);
+        localStorage.setItem('roles', this.userData.roles);
+        const postsResp = await this.http.get("http://localhost:9000/getAllPosts").toPromise();
+        this.temp = postsResp;
+        this.posts = this.temp.posts;
+        this.data = this.posts;
+        this.totalRecords = this.data.length;
+      } catch (error) {
+        console.error(error);
+      }
+    
+  
   }
+  
+  
 
   isDropdownOpen = false;
 
@@ -82,7 +90,7 @@ export class UserForumComponent implements OnInit {
   post() {
     this.postData = this.postForm.value;
     if (this.postData.content != null && this.postData.title != "") {
-      this.postData.postedBy = this.userData.rollno;
+      this.postData.postedBy = this.userData.id;
       this.http.post("http://localhost:9000/addPost", this.postData).subscribe((resp: any) => {
         console.log(resp);
         this.router.navigateByUrl('home', { skipLocationChange: true }).then(() => {

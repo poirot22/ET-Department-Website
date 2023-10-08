@@ -15,7 +15,7 @@
             <div class="py-1 flex flex-col justify-center" role="menu" aria-orientation="vertical"
                 aria-labelledby="options-menu">
                 <button class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                    role="menuitem" routerLink="/profile/{{userData.rollno}}">Profile</button>
+                    role="menuitem" routerLink="/profile/{{userData.id}}">Profile</button>
                 <button (click)="logout()"
                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                     role="menuitem">Logout</button>
@@ -46,7 +46,7 @@
                             <a class="text-sm text-white bg-sky-900 p-1 rounded-md" id="comment-btn"
                                 routerLink="/comment/{{ post._id }}">Comment</a>
                         </div>
-                        <div class="flex justify-end p-2" *ngIf="post.postedBy==this.userData.rollno">
+                        <div class="flex justify-end p-2" *ngIf="post.postedBy==this.userData.id || this.userData.roles.includes('faculty')">
                             <a class="text-sm p-1  text-red-900 cursor-pointer hover:bg-red-900 hover:text-white rounded-lg" id="comment-btn" (click)="deletePost(post._id)">Delete</a>
                         </div>
 

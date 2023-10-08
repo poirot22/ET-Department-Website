@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const student = new mongoose.Schema({
-    rollno:{
+    id:{
         type:String,
         required:true
     },
@@ -23,7 +23,6 @@ const student = new mongoose.Schema({
     },
     section:{
         type:String,
-        required:true
     },
     posts:{
         type:Array,
@@ -37,6 +36,10 @@ const student = new mongoose.Schema({
         type:Array,
         default:[]
     },
+    roles:{
+        type:Array,
+        default:["student"]
+    }
 })
 
 const post = new mongoose.Schema({
@@ -86,7 +89,6 @@ const faculty = new mongoose.Schema({
     },
     education:{
         type:String,
-        required:true
     },
     picture:{
         type:String,
@@ -102,10 +104,6 @@ const faculty = new mongoose.Schema({
         type:Array,
         default:[]
     },
-    password:{
-        type:String,
-        required:true
-    },
     posts:{
         type:Array,
         default:[]
@@ -118,6 +116,10 @@ const faculty = new mongoose.Schema({
         type:Array,
         default:["faculty"]
     },
+    branch:{
+        type:String,
+        required:true
+    }
 })
 
 const comment= new mongoose.Schema({

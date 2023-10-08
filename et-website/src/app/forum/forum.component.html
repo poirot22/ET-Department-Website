@@ -11,29 +11,10 @@
                 <p class="text-2xl font-bold text-white">Login for Students</p>
             </div>
             <div class="pt-4">
-                <form action="" [formGroup]="loginForm" (ngSubmit)="loginStudent()"
+                <form action="" [formGroup]="loginForm" (ngSubmit)="login()"
                     class="flex flex-col justify-center p-2">
                     <input type="text" placeholder="Enter College ID" class="border-black border-1 p-1 rounded-md mb-2"
-                        formControlName="rollno">
-                    <input type="password" placeholder="Enter Password"
-                        class="border-black border-1 p-1 rounded-md mb-2" formControlName="password">
-                    <button class="button p-2 flex-grow w-full"> <!-- Apply flex-grow and w-full -->
-                        <a class="text-sm bg-sky-900 text-white p-2 rounded-lg mt-0">Sign In</a>
-                    </button>
-                </form>
-            </div>
-        </div>
-
-
-        <div class="rounded-lg w-1/4 shadow-2xl mt-2">
-            <div class="m-0 p-0 flex justify-center bg-sky-900 p-4 m-auto rounded-t-lg">
-                <p class="text-2xl font-bold text-white">Login for Faculty</p>
-            </div>
-            <div class="pt-4">
-                <form action="" [formGroup]="loginForm" (ngSubmit)="loginStudent()"
-                    class="flex flex-col justify-center p-2">
-                    <input type="text" placeholder="Enter College ID" class="border-black border-1 p-1 rounded-md mb-2"
-                        formControlName="rollno">
+                        formControlName="id">
                     <input type="password" placeholder="Enter Password"
                         class="border-black border-1 p-1 rounded-md mb-2" formControlName="password">
                     <button class="button p-2 flex-grow w-full"> <!-- Apply flex-grow and w-full -->
@@ -43,10 +24,6 @@
             </div>
         </div>
     
-    
-
-        
-
     </div>
 
 
@@ -63,7 +40,7 @@
             </div>
             <div class="text-md p-3 ml-3 bg-slate-200 rounded-bl-lg">{{post.content}}</div>
             <div class=" m-2 flex justify-end">
-                <a class="text-sm  text text-white  bg-sky-900 p-2  rounded-md font-light cursor-pointer"routerLink="/comment/{{ post._id }}" id="comment-btn">Comment</a>
+                <a class="text-sm  text text-white  bg-sky-900 p-2  rounded-md font-light cursor-pointer"  id="comment-btn" routerLink="/comment/{{post._id}}">Comment</a>
             </div>
         </div>
         <div class="flex justify-center">
