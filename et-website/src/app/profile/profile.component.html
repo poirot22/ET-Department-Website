@@ -1,7 +1,8 @@
 <div class="flex flex-col items-center p-2">
     <div class="w-full max-w-md p-8 bg-sky-900 border rounded-2xl">
         <div class="flex flex-row justify-between items-center">
-            <h1 class="text-2xl font-bold tracking-tight text-gray-900 text-white">{{ user.firstName }} {{ user.lastName }}</h1>
+            <h1 class="text-2xl font-bold tracking-tight text-gray-900 text-white">{{ user.firstName }} {{ user.lastName
+                }}</h1>
         </div>
         <div class="flex flex-col mt-4 bg-white max-w-md p-3 rounded-2xl shadow-2xl">
             <p class="text-gray-700 dark:text-gray-400">Roll No.: {{ user.id }}</p>
@@ -10,21 +11,116 @@
         </div>
     </div>
 
+    <div class="p-2 flex flex-col justify-center">
+        <div class="flex justify-center p-2">
+            <div class="text-2xl">Projects({{user.projects.length}})</div>
+        </div>
+        <div class="flex justify-center"><div *ngIf="user.projects.length==0">No Projects</div></div>
+        <div id="carouselExampleIndicators" class="carousel slide  border border-2 rounded-lg shadow-2xl"
+            data-bs-ride="carousel" *ngIf="user.projects.length>0">
+            <div class="carousel-inner p-8">
+                <div *ngFor="let project of user.projects; let i=index">
+                    <div *ngIf="i==0; else elseblock">
+                        <div class="carousel-item active">
+                            <div class="flex flex-col justify-center items-center space-y-4 project-details p-3"
+                                style="width: 600px; height: 300px;">
+                                <div class="font-bold text-lg text-center text-gray-900">
+                                    {{ i + 1 }}. {{ project.title }}
+                                </div>
+                                <div class="text-base text-center text-gray-700">
+                                    {{ project.description }}
+                                </div>
+                                <div class="text-base text-center text-gray-700">
+                                    Tech Stack: {{ project.techstack }}
+                                </div>
+                                <a href="{{ project.link }}" target="_blank" class="text-blue-500 hover:underline">
+                                    Link
+                                </a>
+                                <button class="text-red-900 p-1 rounded-lg  hover:text-white hover:bg-red-900"
+                                    (click)="deleteProject(i+1)">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                    <ng-template #elseblock>
+                        <div class="carousel-item">
+                            <div class="flex flex-col justify-center items-center space-y-4 project-details"
+                                style="width: 600px; height: 300px;">
+                                <div class="font-bold text-lg text-center text-gray-900">
+                                    {{ i + 1 }}. {{ project.title }}
+                                </div>
+                                <div class="text-base text-center text-gray-700">
+                                    {{ project.description }}
+                                </div>
+                                <div class="text-base text-center text-gray-700">
+                                    Tech Stack: {{ project.techstack }}
+                                </div>
+                                <a href="{{ project.link }}" target="_blank" class="text-blue-500 hover:underline">
+                                    Link
+                                </a>
+                                <button class="text-red-900 p-1 rounded-lg  hover:text-white hover:bg-red-900"
+                                    (click)="deleteProject(i+1)">Delete</button>
+                            </div>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+                <!-- Previous Arrow Icon -->
+                <span class="carousel-control-prev-icon bg-black" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+                <!-- Next Arrow Icon -->
+                <span class="carousel-control-next-icon bg-black" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+
+        <div class="flex justify-center"><button class="bg-sky-900 text-white p-2 rounded-lg my-2 w-40 hover:bg-sky-800"
+                (click)="hideandshow()">Add
+                Projects</button></div>
+    </div>
+
+    <div class="border border-2 p-3 w-96" id="edit" style="display: none;">
+        <div class="space-y-2">
+            <form action="" [formGroup]="projectForm" class="flex flex-col justify-center gap-2"
+                (ngSubmit)="addProject()">
+                <input type="text" placeholder="Enter Title"
+                    class="p-2 rounded border focus:outline-none focus:ring focus:border-sky-900"
+                    formControlName="title" />
+                <textarea rows="4" placeholder="Enter Description"
+                    class="p-2 rounded border focus:outline-none focus:ring focus:border-sky-900"
+                    formControlName="description"></textarea>
+                <input type="text" placeholder="Enter Tech Stack"
+                    class="p-2 rounded border focus:outline-none focus:ring focus:border-sky-900"
+                    formControlName="techstack" />
+                <input type="text" placeholder="Enter Link"
+                    class="p-2 rounded border focus:outline-none focus:ring focus:border-sky-900"
+                    formControlName="link" />
+                <button class="bg-sky-900 text-white p-2 rounded-lg hover:bg-sky-800">Add</button>
+            </form>
+        </div>
+    </div>
+
     <div class="w-full max-w-full p-4">
         <h2 class="text-2xl font-bold">My Posts</h2>
     </div>
     <div class="w-full max-w-full">
-        <div *ngIf="this.userPosts.length==0" class="text-2xl flex justify-center">No Posts</div>
+        <div *ngIf="userPosts.length === 0" class="text-2xl flex justify-center">No Posts</div>
         <div *ngFor="let post of userPosts" class="p-4 border-b">
             <div class="flex flex-row justify-between items-center">
                 <div class="flex">
-                    <a  routerLink="/comment/{{post._id}}"><h1 class="text-2xl font-bold tracking-tight text-gray-900 p-4">{{ post.title }}</h1></a>
+                    <a routerLink="/comment/{{post._id}}">
+                        <h1 class="text-2xl font-bold tracking-tight text-gray-900 p-4">{{ post.title }}</h1>
+                    </a>
                     <div class="flex items-center gap-3 text-gray-700 dark:text-gray-400 ml-4">
                         <p>{{ post.postedOn.slice(0, 10) | date: 'dd/MM/yyyy' }}</p>
                         <p>{{ post.postedOn.slice(11, 16) }}</p>
                     </div>
                 </div>
-                
                 <button class="text-red-600 hover:text-red-800" (click)="deletePost(post._id)">Delete</button>
             </div>
             <p class="text-gray-700 dark:text-gray-400 ml-5">{{ post.content }}</p>

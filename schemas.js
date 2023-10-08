@@ -32,7 +32,7 @@ const student = new mongoose.Schema({
         type:Array,
         default:[]
     },
-    projectS:{
+    projects:{
         type:Array,
         default:[]
     },

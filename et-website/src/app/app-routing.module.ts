@@ -1,5 +1,5 @@
 import { ReplyComponent } from './reply/reply.component';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { InfrastructureComponent } from './infrastructure/infrastructure.component';
@@ -15,6 +15,7 @@ import { DevteamComponent } from './devteam/devteam.component';
 import { StudentsclubComponent } from './studentsclub/studentsclub.component';
 import { FacultyprofileComponent } from './facultyprofile/facultyprofile.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 
 const routes: Routes = [
@@ -73,6 +74,10 @@ const routes: Routes = [
   {
     component:ProfileComponent,
     path:'profile/:rollno'
+  },
+  {
+    component:ContactUsComponent,
+    path:'contactus'
   }
 
 ];
