@@ -33,7 +33,6 @@ async function addFaculty(body) {
 
     console.log(facultyExists)
     if (facultyExists == null) {
-        body.password = await bcrypt.hash(body.password, 10)
         const newFaculty = new Faculty(body)
         await newFaculty.save()
         return "Faculty Added"
