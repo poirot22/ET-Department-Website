@@ -12,6 +12,7 @@ export class ProfileComponent {
   rollNo: any = '';
   user: any = '';
   posts: any = '';
+  userId: any = localStorage.getItem('id');
   userPosts: any = [];
   constructor(private router: ActivatedRoute, private http: HttpClient) {}
 
@@ -21,6 +22,7 @@ export class ProfileComponent {
       .get('http://localhost:9000/getStudentByRollNo/' + this.rollNo)
       .toPromise();
     this.user = userDataResp['Student Data'];
+    console.log(this.user.id)
     console.log(this.user);
     this.posts = this.user.posts;
     console.log(this.posts);

@@ -15,7 +15,9 @@
         <div class="flex justify-center p-2">
             <div class="text-2xl">Projects({{user.projects.length}})</div>
         </div>
-        <div class="flex justify-center"><div *ngIf="user.projects.length==0">No Projects</div></div>
+        <div class="flex justify-center">
+            <div *ngIf="user.projects.length==0">No Projects</div>
+        </div>
         <div id="carouselExampleIndicators" class="carousel slide  border border-2 rounded-lg shadow-2xl"
             data-bs-ride="carousel" *ngIf="user.projects.length>0">
             <div class="carousel-inner p-8">
@@ -37,7 +39,7 @@
                                     Link
                                 </a>
                                 <button class="text-red-900 p-1 rounded-lg  hover:text-white hover:bg-red-900"
-                                    (click)="deleteProject(i+1)">Delete</button>
+                                    (click)="deleteProject(i+1)" *ngIf="this.user.id==this.userId">Delete</button>
                             </div>
                         </div>
                     </div>
@@ -58,7 +60,7 @@
                                     Link
                                 </a>
                                 <button class="text-red-900 p-1 rounded-lg  hover:text-white hover:bg-red-900"
-                                    (click)="deleteProject(i+1)">Delete</button>
+                                    (click)="deleteProject(i+1)" *ngIf="this.user.id==this.userId">Delete</button>
                             </div>
                         </div>
                     </ng-template>
@@ -79,7 +81,7 @@
         </div>
 
 
-        <div class="flex justify-center"><button class="bg-sky-900 text-white p-2 rounded-lg my-2 w-40 hover:bg-sky-800"
+        <div class="flex justify-center" *ngIf="this.user.id==this.userId"><button class="bg-sky-900 text-white p-2 rounded-lg my-2 w-40 hover:bg-sky-800"
                 (click)="hideandshow()">Add
                 Projects</button></div>
     </div>
@@ -105,10 +107,10 @@
         </div>
     </div>
 
-    <div class="w-full max-w-full p-4">
+    <div class="w-full max-w-full p-4" *ngIf="this.user.id==this.userId">
         <h2 class="text-2xl font-bold">My Posts</h2>
     </div>
-    <div class="w-full max-w-full">
+    <div class="w-full max-w-full" *ngIf="this.user.id==this.userId">
         <div *ngIf="userPosts.length === 0" class="text-2xl flex justify-center">No Posts</div>
         <div *ngFor="let post of userPosts" class="p-4 border-b">
             <div class="flex flex-row justify-between items-center">

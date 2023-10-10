@@ -37,8 +37,9 @@
                     class="shadow-md m-3 rounded-lg" id="post-box">
                     <div class="flex bg-sky-900 p-2 rounded-t-lg">
                         <div class=" text-white text-xl font-semibold p-2" id="post-title">{{ post.title }}</div>
-                        <div class="text-sm font-light p-2 mt-1.5  text-white">&#x2022; by {{ post.postedBy }} on {{
-                            post.postedOn.slice(11,16) }}, {{ post.postedOn.slice(0,10) | date: 'dd/MM/yyyy' }}</div>
+                        <div class="text-sm font-light p-2 mt-1.5  text-white">&#x2022; by <span class="cursor-pointer text-white underline underline-offset-2"routerLink="/profile/{{post.postedBy}}">{{post.postedBy }}</span>
+                            on {{post.postedOn.slice(11,16) }}, {{ post.postedOn.slice(0,10) | date: 'dd/MM/yyyy' }}
+                        </div>
                     </div>
                     <div class="text-md p-1 ml-3 bg-slate-200 rounded-bl-lg p-3">{{ post.content }}</div>
                     <div class="flex justify-end">
@@ -46,8 +47,10 @@
                             <a class="text-sm text-white bg-sky-900 p-1 rounded-md" id="comment-btn"
                                 routerLink="/comment/{{ post._id }}">Comment</a>
                         </div>
-                        <div class="flex justify-end p-2" *ngIf="post.postedBy==this.userData.id || this.userData.roles.includes('faculty')">
-                            <a class="text-sm p-1  text-red-900 cursor-pointer hover:bg-red-900 hover:text-white rounded-lg" id="comment-btn" (click)="deletePost(post._id)">Delete</a>
+                        <div class="flex justify-end p-2"
+                            *ngIf="post.postedBy==this.userData.id || this.userData.roles.includes('faculty')">
+                            <a class="text-sm p-1  text-red-900 cursor-pointer hover:bg-red-900 hover:text-white rounded-lg"
+                                id="comment-btn" (click)="deletePost(post._id)">Delete</a>
                         </div>
 
                     </div>
