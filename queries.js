@@ -10,7 +10,7 @@ const Student = mongoose.model("Student", schemas.student)
 const Post = mongoose.model("Post", schemas.post)
 const Faculty = mongoose.model("Faculty", schemas.faculty)
 const Comment=mongoose.model("Comment",schemas.comment)
-
+const Event=mongoose.model("Event",schemas.event)
 async function addStudent(body) {
     const studentExists = await Student.findOne({ "id": body.rollno })
 
@@ -243,6 +243,16 @@ async function deleteProject(index,id){
     return { "message": "Project deleted", "status": 201}
 }
 
+async function addEvent(name,link){
+    const newEvent=new Event({"name":name,"link":link})
+    await newEvent.save();
+    return {"message":"Event added","status":201,"event":newEvent}
+}
+
+async function getAllEvents(){
+    const events=await Event.find();
+    return {"message":"Events returned","status":201,"events":events}
+}
 
 
 module.exports.addStudent = addStudent
@@ -261,4 +271,5 @@ module.exports.getCommentByID=getCommentByID
 module.exports.deleteComment=deleteComment
 module.exports.addProject = addProject
 module.exports.deleteProject = deleteProject
-
+module.exports.addEvent=addEvent
+module.exports.getAllEvents=getAllEvents

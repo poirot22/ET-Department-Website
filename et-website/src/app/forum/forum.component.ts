@@ -63,11 +63,10 @@ export class ForumComponent {
   }*/
 
   logout(){
-    localStorage.removeItem("studentToken")
+    localStorage.removeItem("userToken")
   }
 
 
 
 }
 
-}

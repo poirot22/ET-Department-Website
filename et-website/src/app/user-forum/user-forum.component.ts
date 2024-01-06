@@ -81,7 +81,7 @@ export class UserForumComponent implements OnInit {
   });
 
   logout() {
-    localStorage.removeItem("studentToken");
+    localStorage.removeItem("userToken");
     this.router.navigate(["/forum"]);
   }
 

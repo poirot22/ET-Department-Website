@@ -15,7 +15,7 @@ const jwt = require('jsonwebtoken')
 //MIDDLEWARES
 app.use(express.json())
 app.use(cors({
-    origin:'http://localhost:4200'
+    origin:'http://localhost:3000'
 }
 ))
 
@@ -109,6 +109,12 @@ app.get("/getCommentByID/:commentID",(req,res)=>{
     })
 })
 
+app.get("/getAllEvents",(req,res)=>{
+    queries.getAllEvents().then(response=>{
+        res.status(response.status).send(response)
+    })
+})
+
 //POST Methods
 app.post('/addStudent',(req,res)=>{
     studentData = req.body
@@ -148,6 +154,13 @@ app.post('/login',(req,res)=>{
     })
 })
 
+app.post('/addEvent',(req,res)=>{
+    const eventData=req.body
+    queries.addEvent(eventData.name,eventData.link).then(resp=>{
+        res.status(resp.status).send(resp)
+    })
+   
+})  
 
 
 //PUT Methods

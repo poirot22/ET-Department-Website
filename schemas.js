@@ -137,8 +137,44 @@ const comment= new mongoose.Schema({
     }
 })
 
+const admin=new mongoose.Schema({
+    userid:{
+        type:String,
+        required:true
+    },
+    password:{
+        type:String,
+        required:true
+    }
+})
+
+const material = new mongoose.Schema({
+    title:{
+        type:String,
+        required:true
+    },
+    location:{
+        type:String,
+        required:true
+    }
+})
+
+const event= new mongoose.Schema({ 
+    name:{
+        type:String,
+        required:true
+    },
+    link:{
+        type:String,
+        required:true
+    },
+    
+})
 
 module.exports = mongoose.model('Student', student);
 module.exports = mongoose.model('Post', post);
 module.exports = mongoose.model('Faculty', faculty);
 module.exports = mongoose.model('Comment', comment);
+module.exports = mongoose.model('Event', event);
+module.exports = mongoose.model('Admin', admin);
+module.exports = mongoose.model('Material', material);
