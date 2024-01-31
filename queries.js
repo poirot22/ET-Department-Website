@@ -246,7 +246,8 @@ async function deleteProject(index,id){
 async function addEvent(name,link){
     const newEvent=new Event({"name":name,"link":link})
     await newEvent.save();
-    return {"message":"Event added","status":201,"event":newEvent}
+    
+    return {"message":"Event added","status":201,"new event":newEvent,"events":await Event.find()}
 }
 
 async function getAllEvents(){

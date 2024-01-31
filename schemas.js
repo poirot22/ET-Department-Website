@@ -119,8 +119,30 @@ const faculty = new mongoose.Schema({
     branch:{
         type:String,
         required:true
+    },
+    publications:{
+        type:Array,
+        default:[]
+    },
+    projects_guided:{
+        type:Number
+    },
+    specialization:
+    {
+        type:String,
+        required:true
+    },
+    publications_number:{
+        type:Number,
+        default:0
+    },
+    joining_date:{
+        type:Date,
+        required:true
     }
-})
+
+    }
+)
 
 const comment= new mongoose.Schema({
     content:{
